@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<title>3D &amp; Motion Design Jobs - Remote Global</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #141420;
+    --surface-2: #1c1c2e;
+    --border: #2a2a42;
+    --text: #e8e8f0;
+    --text-muted: #8888a8;
+    --accent: #7c3aed;
+    --accent-light: #a78bfa;
+    --cyan: #22d3ee;
+    --cyan-light: #67e8f9;
+    --orange: #fb923c;
+    --red: #f87171;
+    --green: #34d399;
+    --pink: #f472b6;
+    --yellow: #fbbf24;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0f0a2e 0%, #1a0a3e 40%, #0a1628 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 1.5rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.1) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 40%, rgba(34,211,238,0.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; position: relative; }
+  .hero h1 span { background: linear-gradient(135deg, var(--cyan), var(--accent-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero .subtitle { color: var(--text-muted); font-size: 1rem; position: relative; }
+  .hero .stats-bar { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; position: relative; }
+  .stat { text-align: center; }
+  .stat .num { font-size: 1.6rem; font-weight: 700; color: var(--cyan-light); }
+  .stat .label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .nav-wrapper { position: sticky; top: 0; z-index: 100; background: rgba(10,10,15,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav { max-width: 1200px; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: none; padding: 0 1rem; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { color: var(--text-muted); text-decoration: none; padding: 0.85rem 1rem; font-size: 0.82rem; font-weight: 500; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; }
+  .nav a:hover, .nav a.active { color: var(--cyan); border-bottom-color: var(--accent); }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+  section { margin-bottom: 2.5rem; scroll-margin-top: 60px; }
+  .section-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+  .section-header h2 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.01em; }
+  .badge { background: var(--accent); color: #fff; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .badge.cyan { background: #0891b2; }
+  .badge.orange { background: #ea580c; }
+  .badge.green { background: #059669; }
+  .badge.pink { background: #db2777; }
+
+  .jobs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1rem; }
+  .job-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    transition: border-color 0.2s, transform 0.15s;
+    display: flex; flex-direction: column;
+  }
+  .job-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .job-card .company { font-size: 0.75rem; color: var(--cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; }
+  .job-card .title { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.35; }
+  .job-card .meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.65rem; }
+  .tag { font-size: 0.7rem; padding: 0.2rem 0.55rem; border-radius: 99px; font-weight: 500; white-space: nowrap; }
+  .tag.remote { background: rgba(34,211,238,0.15); color: var(--cyan-light); }
+  .tag.hybrid { background: rgba(251,146,60,0.15); color: var(--orange); }
+  .tag.onsite { background: rgba(136,136,168,0.15); color: var(--text-muted); }
+  .tag.salary { background: rgba(52,211,153,0.15); color: var(--green); }
+  .tag.level { background: rgba(124,58,237,0.15); color: var(--accent-light); }
+  .tag.hot { background: rgba(251,191,36,0.2); color: var(--yellow); }
+  .tag.contract { background: rgba(244,114,182,0.15); color: var(--pink); }
+  .tag.closing { background: rgba(248,113,113,0.15); color: var(--red); }
+  .job-card .desc { font-size: 0.85rem; color: var(--text-muted); flex: 1; margin-bottom: 0.75rem; }
+  .job-card .apply-link { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--cyan); text-decoration: none; font-size: 0.82rem; font-weight: 500; transition: color 0.15s; }
+  .job-card .apply-link:hover { color: #fff; }
+  .arrow-svg { display: inline; vertical-align: middle; width: 14px; height: 14px; }
+
+  .resource-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.75rem; }
+  .resource-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem 1.15rem; display: flex; align-items: flex-start; gap: 0.85rem; transition: border-color 0.2s; }
+  .resource-card:hover { border-color: var(--accent); }
+  .resource-card .icon { width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; }
+  .resource-card .icon.purple { background: rgba(124,58,237,0.2); color: var(--accent-light); }
+  .resource-card .icon.cyan { background: rgba(34,211,238,0.2); color: var(--cyan); }
+  .resource-card .icon.orange { background: rgba(251,146,60,0.2); color: var(--orange); }
+  .resource-card .icon.pink { background: rgba(244,114,182,0.2); color: var(--pink); }
+  .resource-card .icon.green { background: rgba(52,211,153,0.2); color: var(--green); }
+  .resource-card .rname { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.15rem; }
+  .resource-card .rnote { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+  .resource-card a { color: var(--cyan); text-decoration: none; font-size: 0.75rem; word-break: break-all; }
+
+  .community-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem; }
+  .comm-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem; }
+  .comm-card .platform { font-size: 0.68rem; color: var(--accent-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.2rem; }
+  .comm-card .name { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.2rem; }
+  .comm-card .info { font-size: 0.78rem; color: var(--text-muted); }
+  .comm-card a { color: var(--cyan); text-decoration: none; font-size: 0.78rem; }
+
+  .salary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+  .salary-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem 1.25rem; }
+  .salary-card .role { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .salary-bar-track { background: var(--surface-2); border-radius: 99px; height: 8px; margin-bottom: 0.35rem; overflow: hidden; }
+  .salary-bar-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--accent), var(--cyan)); }
+  .salary-vals { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); }
+  .salary-vals .highlight { color: var(--cyan-light); font-weight: 600; }
+
+  .chip-wrap { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .chip { background: var(--surface); border: 1px solid var(--border); border-radius: 99px; padding: 0.4rem 1rem; font-size: 0.82rem; color: var(--text); transition: all 0.2s; }
+  .chip:hover { border-color: var(--accent); background: var(--surface-2); }
+  .chip .count { color: var(--text-muted); font-size: 0.72rem; margin-left: 0.3rem; }
+
+  .tips-list { list-style: none; counter-reset: tips; }
+  .tips-list li { counter-increment: tips; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem 1rem 1rem 3.25rem; margin-bottom: 0.5rem; position: relative; font-size: 0.9rem; }
+  .tips-list li::before { content: counter(tips); position: absolute; left: 1rem; top: 1rem; width: 1.6rem; height: 1.6rem; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #fff; }
+  .tips-list li strong { color: var(--text); }
+
+  footer { text-align: center; padding: 2rem 1rem; color: var(--text-muted); font-size: 0.78rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+
+  @media (max-width: 768px) {
+    .hero { padding: 2rem 1rem 1.75rem; }
+    .hero h1 { font-size: 1.6rem; }
+    .hero .stats-bar { gap: 1rem; }
+    .stat .num { font-size: 1.3rem; }
+    .nav a { padding: 0.75rem 0.85rem; font-size: 0.78rem; }
+    .container { padding: 1rem; }
+    .jobs-grid, .resource-grid, .community-grid, .salary-grid { grid-template-columns: 1fr; }
+    .job-card { padding: 1rem; }
+    .job-card .apply-link { display: flex; padding: 0.65rem 0; font-size: 0.85rem; }
+    .section-header h2 { font-size: 1.15rem; }
+    .tips-list li { padding: 0.85rem 0.85rem 0.85rem 3rem; font-size: 0.85rem; }
+  }
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 1.35rem; }
+    .nav a { padding: 0.7rem 0.65rem; font-size: 0.72rem; }
+  }
+  @media (hover: none) {
+    .job-card:hover { transform: none; border-color: var(--border); }
+    .job-card:active { border-color: var(--accent); }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1><span>3D &amp; Motion Design</span> Jobs</h1>
+  <p class="subtitle">Remote global roles for 3D Designers, Motion Designers &amp; Houdini Artists. Compiled 3 April 2026.</p>
+  <div class="stats-bar">
+    <div class="stat"><div class="num">45+</div><div class="label">Active Roles</div></div>
+    <div class="stat"><div class="num">2,440+</div><div class="label">Remote 3D Jobs</div></div>
+    <div class="stat"><div class="num">168</div><div class="label">Houdini on LinkedIn</div></div>
+    <div class="stat"><div class="num">269</div><div class="label">Motion on Glassdoor</div></div>
+  </div>
+</header>
+
+<div class="nav-wrapper">
+  <nav class="nav">
+    <a href="#motion" class="active">3D / Motion</a>
+    <a href="#houdini">Houdini / FX</a>
+    <a href="#studios">VFX Studios</a>
+    <a href="#tech">Tech / AR / VR</a>
+    <a href="#boards">Job Boards</a>
+    <a href="#communities">Communities</a>
+    <a href="#freelance">Freelance</a>
+    <a href="#salaries">Salaries</a>
+    <a href="#tips">Tips</a>
+  </nav>
+</div>
+
+<div class="container">
+
+<!-- 3D / Motion Designer Roles -->
+<section id="motion">
+  <div class="section-header">
+    <h2>3D Designer &amp; Motion Design Roles</h2>
+    <span class="badge cyan">Remote Global</span>
+  </div>
+  <div class="jobs-grid">
+
+    <div class="job-card">
+      <div class="company">General Motors</div>
+      <div class="title">Motion Designer, Visual Identity &amp; Design System</div>
+      <div class="meta">
+        <span class="tag remote">Remote</span>
+        <span class="tag salary">$125k-$193k</span>
+      </div>
+      <div class="desc">Define how motion brings GM's digital experiences to life across web, app, and emerging platforms.</div>
+      <a class="apply-link" href="https://search-careers.gm.com/en/jobs/jr-202601749/motion-designer-visual-identity-and-design-system/" target="_blank">Apply on GM Careers <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Prospekt</div>
+      <div class="title">Senior 3D &amp; Motion Designer</div>
+      <div class="meta">
+        <span class="tag remote">Remote (NA/EU)</span>
+        <span class="tag salary">$80k-$120k</span>
+        <span class="tag level">5+ years</span>
+      </div>
+      <div class="desc">Lead visual direction for 3D and motion work across experiential campaigns. C4D, Blender, or Houdini; Octane/Redshift.</div>
+      <a class="apply-link" href="https://www.designremotejobs.com/job/prospekt-senior-3d-motion-designer" target="_blank">Apply <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">General Motors</div>
+      <div class="title">Sr/Staff Technical Artist (Materials, Lighting &amp; Procedural Environments)</div>
+      <div class="meta">
+        <span class="tag remote">Remote / hybrid</span>
+        <span class="tag level">3+ years Houdini</span>
+      </div>
+      <div class="desc">Procedural tools (Houdini) to generate environments, layouts, and set dressing at scale.</div>
+      <a class="apply-link" href="https://jobgether.com/offer/69a8b29c7f0cfae7f12a1cce-senior-staff-technical-artist---materials-lighting-procedural-environments" target="_blank">Apply <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Contra</div>
+      <div class="title">3D Designer</div>
+      <div class="meta">
+        <span class="tag remote">Fully Remote</span>
+      </div>
+      <div class="desc">Design visually compelling 3D models, collaborate with cross-functional teams.</div>
+      <a class="apply-link" href="https://weworkremotely.com/remote-jobs/contra-3d-designer-2" target="_blank">Apply on WWR <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Contra</div>
+      <div class="title">Motion Designer</div>
+      <div class="meta">
+        <span class="tag remote">Fully Remote</span>
+      </div>
+      <div class="desc">Create engaging visual animations supporting brand mission.</div>
+      <a class="apply-link" href="https://weworkremotely.com/remote-jobs/contra-motion-designer-1" target="_blank">Apply on WWR <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Negativ Design</div>
+      <div class="title">3D Motion Graphics Artist</div>
+      <div class="meta">
+        <span class="tag remote">Remote</span>
+      </div>
+      <div class="desc">Conceptualizing and producing motion graphics and 3D animations. C4D, Redshift, After Effects.</div>
+      <a class="apply-link" href="https://www.glassdoor.com/Job/remote-motion-graphics-jobs-SRCH_IL.0,6_IS11047_KO7,22.htm" target="_blank">Apply on Glassdoor <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">BGX Technologies</div>
+      <div class="title">Motion Designer / 2D-3D Animator</div>
+      <div class="meta">
+        <span class="tag remote">Remote</span>
+      </div>
+      <div class="desc">Create high-impact animated content for large-format display systems (LED walls, video walls).</div>
+      <a class="apply-link" href="https://www.ziprecruiter.com/Jobs/Remote-Motion-Designer" target="_blank">Apply on ZipRecruiter <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Eight Clients</div>
+      <div class="title">Graphic Designer (Motion &amp; Animation)</div>
+      <div class="meta">
+        <span class="tag remote">Fully Remote</span>
+      </div>
+      <div class="desc">Static social media posts, video content, 2D and 3D animations.</div>
+      <a class="apply-link" href="https://weworkremotely.com/remote-jobs/eight-clients-graphic-designer-motion-and-animation" target="_blank">Apply on WWR <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">SumUp</div>
+      <div class="title">Motion Designer / 3D Artist</div>
+      <div class="meta">
+        <span class="tag hybrid">Berlin (check remote)</span>
+      </div>
+      <div class="desc">3D Animation, Motion Graphics, and Compositing.</div>
+      <a class="apply-link" href="https://dribbble.com/jobs/34130-Motion-Designer-3D-Artist" target="_blank">Apply on Dribbble <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Variety Magazine</div>
+      <div class="title">Motion Designer</div>
+      <div class="meta">
+        <span class="tag remote">Remote-friendly</span>
+      </div>
+      <div class="desc">Animate across a range of styles, integrating 2D and 3D techniques.</div>
+      <a class="apply-link" href="https://dribbble.com/jobs/303311-Variety-Motion-Designer" target="_blank">Apply on Dribbble <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Drink BREZ</div>
+      <div class="title">Motion Designer</div>
+      <div class="meta">
+        <span class="tag remote">Remote</span>
+      </div>
+      <div class="desc">3D design plays key role in brand visual identity.</div>
+      <a class="apply-link" href="https://dribbble.com/jobs/277274-Motion-Designer" target="_blank">Apply on Dribbble <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">DailyRemote Listing</div>
+      <div class="title">Creative Growth Designer (Motion &amp; Video Lead)</div>
+      <div class="meta">
+        <span class="tag remote">Remote US</span>
+        <span class="tag salary">$130k-$160k</span>
+        <span class="tag hot">Posted 2 days ago</span>
+      </div>
+      <div class="desc">Motion and video lead role at a growth-stage company.</div>
+      <a class="apply-link" href="https://dailyremote.com/remote-motion-designer-jobs" target="_blank">Apply on DailyRemote <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Landor</div>
+      <div class="title">Senior Motion Designer</div>
+      <div class="meta">
+        <span class="tag hybrid">New York, hybrid</span>
+        <span class="tag level">Senior</span>
+      </div>
+      <div class="desc">Global branding agency. Motion design for major brand identities.</div>
+      <a class="apply-link" href="https://www.branding-jobs.com/jobs/senior-motion-designer-d9be5416" target="_blank">Apply <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Landor</div>
+      <div class="title">Motion Designer</div>
+      <div class="meta">
+        <span class="tag hybrid">London / Paris / Mumbai</span>
+      </div>
+      <div class="desc">Motion design for one of the world's largest branding agencies.</div>
+      <a class="apply-link" href="https://job-boards.greenhouse.io/landor/jobs/7343211" target="_blank">Apply on Greenhouse <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Houdini / FX Roles -->
+<section id="houdini">
+  <div class="section-header">
+    <h2>Houdini &amp; FX Artist Roles</h2>
+    <span class="badge orange">Specialist</span>
+  </div>
+  <div class="jobs-grid">
+
+    <div class="job-card">
+      <div class="company">CoSA VFX</div>
+      <div class="title">FX Houdini Artist</div>
+      <div class="meta">
+        <span class="tag remote">Remote (US)</span>
+        <span class="tag salary">$92k-$400k range</span>
+        <span class="tag contract">Short-term contract</span>
+      </div>
+      <div class="desc">Fire, smoke, fluids, electricity, explosions, supernatural/magical effects, destruction. 5+ years. Award-winning studio.</div>
+      <a class="apply-link" href="https://www.indeed.com/viewjob?jk=ac0e6863ff15d61f" target="_blank">Apply on Indeed <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">AGBO (Russo Brothers)</div>
+      <div class="title">FX Artist</div>
+      <div class="meta">
+        <span class="tag hybrid">LA preferred, remote considered</span>
+        <span class="tag level">Senior</span>
+      </div>
+      <div class="desc">VFX team. Houdini, Substance, EmberGen, After Effects, Maya. Studio behind Avengers: Endgame.</div>
+      <a class="apply-link" href="https://www.indeed.com/q-houdini-artist-l-remote-jobs.html" target="_blank">Apply on Indeed <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Goodbye Kansas Studios</div>
+      <div class="title">Freelance Realtime FX Artist</div>
+      <div class="meta">
+        <span class="tag remote">Hybrid / Remote</span>
+        <span class="tag contract">Contract to Apr 30</span>
+      </div>
+      <div class="desc">In-engine FX with Unreal (Niagara), Houdini proficiency required. VFX pipeline support.</div>
+      <a class="apply-link" href="https://career.goodbyekansas.com/jobs/6038052-realtime-fx-artist" target="_blank">Apply <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">ILM (Industrial Light &amp; Magic)</div>
+      <div class="title">FX Technical Director</div>
+      <div class="meta">
+        <span class="tag onsite">London</span>
+        <span class="tag level">Mid-Senior</span>
+      </div>
+      <div class="desc">Technical problem-solving at the legendary VFX house. Posted March 2026.</div>
+      <a class="apply-link" href="https://www.entertainmentcareers.net/jobs/s/houdini-fx-artist/remote-us/" target="_blank">Apply <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">SideFX Forum</div>
+      <div class="title">Senior Houdini FX TD + Layout Artist (Freelance)</div>
+      <div class="meta">
+        <span class="tag remote">Remote likely</span>
+        <span class="tag contract">Freelance</span>
+      </div>
+      <div class="desc">Posted March 12, 2026 on SideFX official forum.</div>
+      <a class="apply-link" href="https://www.sidefx.com/forum/topic/103333/" target="_blank">View on SideFX Forum <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">SideFX Forum</div>
+      <div class="title">Procedural Jewelry Modeler (Houdini)</div>
+      <div class="meta">
+        <span class="tag remote">Remote</span>
+        <span class="tag contract">Freelance</span>
+      </div>
+      <div class="desc">Specialist procedural modeling in Houdini. Posted March 3, 2026.</div>
+      <a class="apply-link" href="https://www.sidefx.com/forum/topic/103249/" target="_blank">View on SideFX Forum <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Blue Cow Animations</div>
+      <div class="title">Houdini Animator (x2 positions)</div>
+      <div class="meta">
+        <span class="tag remote">TBC</span>
+        <span class="tag hot">Posted Mar 25</span>
+      </div>
+      <div class="desc">Two Houdini animator positions. Posted on SideFX Forum.</div>
+      <a class="apply-link" href="https://www.sidefx.com/forum/topic/103435/" target="_blank">View on SideFX Forum <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Lockheed Martin</div>
+      <div class="title">Computational Designer (Houdini)</div>
+      <div class="meta">
+        <span class="tag onsite">DFW, Texas</span>
+      </div>
+      <div class="desc">Houdini for computational design at one of the world's largest defence companies.</div>
+      <a class="apply-link" href="https://www.sidefx.com/forum/topic/103276/" target="_blank">View on SideFX Forum <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- VFX Studios -->
+<section id="studios">
+  <div class="section-header">
+    <h2>VFX Studios &amp; Motion Houses</h2>
+    <span class="badge pink">Hiring Now</span>
+  </div>
+  <div class="jobs-grid">
+
+    <div class="job-card">
+      <div class="company">Framestore</div>
+      <div class="title">88 Open Positions (Animator, Creature FX TD, CG Supervisor, more)</div>
+      <div class="meta">
+        <span class="tag hybrid">Melbourne, Montreal, London, LA, Mumbai</span>
+        <span class="tag hot">88 roles</span>
+      </div>
+      <div class="desc">Major VFX house. Roles include Freelance CG, 3D Animator, Creature FX TD, AI Creative Specialist.</div>
+      <a class="apply-link" href="https://framestore.recruitee.com" target="_blank">Framestore Careers <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">DNEG</div>
+      <div class="title">65+ Open Positions</div>
+      <div class="meta">
+        <span class="tag hybrid">London, Vancouver, Mumbai, Sydney, Montreal +</span>
+        <span class="tag hot">65+ roles</span>
+      </div>
+      <div class="desc">Oscar-winning VFX studio. Offices across 10 cities including Sydney.</div>
+      <a class="apply-link" href="https://www.dneg.com/join-us" target="_blank">DNEG Careers <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Sony Imageworks</div>
+      <div class="title">FX Artist, Crowd FX Artist, Houdini Sim Engineer</div>
+      <div class="meta">
+        <span class="tag onsite">Vancouver / Montreal</span>
+      </div>
+      <div class="desc">Multiple FX and Houdini roles. Posted March 2026.</div>
+      <a class="apply-link" href="https://www.imageworks.com/careers" target="_blank">Imageworks Careers <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">The Mill</div>
+      <div class="title">Motion Designer</div>
+      <div class="meta">
+        <span class="tag hybrid">London, NY, LA, Berlin, Bangalore</span>
+      </div>
+      <div class="desc">Typography, motion graphics, character animation, VR/AR, 3D design.</div>
+      <a class="apply-link" href="https://www.themill.com/join-us/" target="_blank">The Mill Careers <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Buck</div>
+      <div class="title">3D Apprenticeship</div>
+      <div class="meta">
+        <span class="tag onsite">New York / Los Angeles</span>
+        <span class="tag salary">$80k-$135k (experienced)</span>
+      </div>
+      <div class="desc">Premier motion design studio. Apprenticeship program + unsolicited applications to careers@buck.co.</div>
+      <a class="apply-link" href="https://buck.co/careers" target="_blank">Buck Careers <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">ManvsMachine</div>
+      <div class="title">Super-Talent (Open Call)</div>
+      <div class="meta">
+        <span class="tag hybrid">London / Los Angeles</span>
+      </div>
+      <div class="desc">Always seeking exceptional creative talent. Open portfolio submissions.</div>
+      <a class="apply-link" href="https://mvsm.com/jobs/super-talent" target="_blank">MVSM Jobs <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Flat2VR Studios</div>
+      <div class="title">Senior 3D Artist</div>
+      <div class="meta">
+        <span class="tag remote">Remote</span>
+        <span class="tag level">5+ years</span>
+      </div>
+      <div class="desc">Unity, Maya, Blender, 3ds Max. Posted March 2026.</div>
+      <a class="apply-link" href="https://animationandvfxjobs.com/flat2vr-studios-hiring-remote-senior-3d-artist-unity/" target="_blank">Apply <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Namaha VFX</div>
+      <div class="title">3D Character &amp; Creature Artist</div>
+      <div class="meta">
+        <span class="tag remote">Remote, project-based</span>
+      </div>
+      <div class="desc">Character and creature work. Posted March 29, 2026.</div>
+      <a class="apply-link" href="https://animationandvfxjobs.com/3d-character-creature-artist-hiring/" target="_blank">Apply <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">EleonsCo</div>
+      <div class="title">SR Environment Artist</div>
+      <div class="meta">
+        <span class="tag remote">Remote</span>
+        <span class="tag level">Senior</span>
+      </div>
+      <div class="desc">Senior 3D environment artist role.</div>
+      <a class="apply-link" href="https://www.designremotejobs.com/job/eleonsco-sr-environment-artist" target="_blank">Apply <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Tech / AR / VR -->
+<section id="tech">
+  <div class="section-header">
+    <h2>Tech, AR/VR &amp; Spatial Computing</h2>
+    <span class="badge green">Big Tech</span>
+  </div>
+  <div class="jobs-grid">
+
+    <div class="job-card">
+      <div class="company">Meta</div>
+      <div class="title">Product Designer, Reality Labs</div>
+      <div class="meta">
+        <span class="tag remote">Remote</span>
+        <span class="tag salary">$135k-$194k</span>
+        <span class="tag level">8+ years</span>
+      </div>
+      <div class="desc">Designing software products, prototyping 3D interactions using Unity for VR/AR.</div>
+      <a class="apply-link" href="https://himalayas.app/companies/meta/jobs/product-designer-reality-labs" target="_blank">Apply <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Apple</div>
+      <div class="title">3D Software Engineer / Technical Experience Designer (Vision Pro)</div>
+      <div class="meta">
+        <span class="tag hybrid">Cupertino (check remote)</span>
+        <span class="tag salary">$138k-$256k</span>
+      </div>
+      <div class="desc">Multiple spatial computing roles for Vision Pro. 3D and immersive experience design.</div>
+      <a class="apply-link" href="https://jobs.apple.com/en-us/search?product=visionos-VISOS" target="_blank">Apple Vision Pro Jobs <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Snap Inc.</div>
+      <div class="title">3D Designer, Augmented Reality</div>
+      <div class="meta">
+        <span class="tag onsite">Los Angeles (4+ days)</span>
+        <span class="tag salary">$133k-$235k</span>
+      </div>
+      <div class="desc">Design and create 2D/3D content for interactive AR experiences on Spectacles.</div>
+      <a class="apply-link" href="https://careers.snap.com/jobs" target="_blank">Snap Careers <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Snap Inc.</div>
+      <div class="title">3D Visual Designer / Design Engineer (Spectacles)</div>
+      <div class="meta">
+        <span class="tag onsite">Los Angeles</span>
+        <span class="tag salary">$209k-$313k</span>
+      </div>
+      <div class="desc">3D visual design and engineering for Spectacles AR hardware.</div>
+      <a class="apply-link" href="https://careers.snap.com/jobs" target="_blank">Snap Careers <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Epic Games</div>
+      <div class="title">3D Artist Roles (8 openings)</div>
+      <div class="meta">
+        <span class="tag remote">Remote (US)</span>
+        <span class="tag hot">8 roles</span>
+      </div>
+      <div class="desc">Multiple 3D roles across Unreal Engine ecosystem.</div>
+      <a class="apply-link" href="https://www.epicgames.com/site/en-US/careers" target="_blank">Epic Careers <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Unity Ecosystem</div>
+      <div class="title">384+ Remote Developer/Artist Openings</div>
+      <div class="meta">
+        <span class="tag remote">Remote</span>
+        <span class="tag salary">Avg $146k/yr</span>
+      </div>
+      <div class="desc">Roles across Unity ecosystem companies. 3D, real-time, and spatial computing.</div>
+      <a class="apply-link" href="https://wellfound.com/role/r/3d-artist" target="_blank">Search on Wellfound <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card">
+      <div class="company">Walt Disney Animation</div>
+      <div class="title">Character Technical Director</div>
+      <div class="meta">
+        <span class="tag onsite">Burbank, CA</span>
+      </div>
+      <div class="desc">Character TD at Disney Animation. Posted March 2026.</div>
+      <a class="apply-link" href="https://www.entertainmentcareers.net/jobs/s/houdini-fx-artist/remote-us/" target="_blank">Apply <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Job Boards -->
+<section id="boards">
+  <div class="section-header">
+    <h2>Job Boards &amp; Aggregators</h2>
+  </div>
+
+  <h3 style="font-size:0.9rem;color:var(--text-muted);margin-bottom:0.75rem;font-weight:600;">3D &amp; Motion Specialist</h3>
+  <div class="resource-grid">
+    <div class="resource-card"><div class="icon purple">M</div><div><div class="rname">Motionographer Jobs</div><div class="rnote">Gold standard for MoGraph jobs</div><a href="https://motionographer.com/jobs/" target="_blank">motionographer.com/jobs</a></div></div>
+    <div class="resource-card"><div class="icon purple">A</div><div><div class="rname">ArtStation Jobs</div><div class="rnote">Best for 3D/VFX/game art studio roles</div><a href="https://www.artstation.com/jobs" target="_blank">artstation.com/jobs</a></div></div>
+    <div class="resource-card"><div class="icon purple">R</div><div><div class="rname">RebelWay VFX Jobs</div><div class="rnote">VFX-specific job board</div><a href="https://www.rebelway.net/vfx-jobs-board/" target="_blank">rebelway.net/vfx-jobs-board</a></div></div>
+    <div class="resource-card"><div class="icon purple">S</div><div><div class="rname">SideFX Forum Jobs</div><div class="rnote">Official Houdini community job board</div><a href="https://www.sidefx.com/forum/60/" target="_blank">sidefx.com/forum/60</a></div></div>
+    <div class="resource-card"><div class="icon purple">S</div><div><div class="rname">School of Motion Jobs</div><div class="rnote">Curated MoGraph jobs</div><a href="https://www.schoolofmotion.com/jobs" target="_blank">schoolofmotion.com/jobs</a></div></div>
+    <div class="resource-card"><div class="icon purple">D</div><div><div class="rname">Dribbble Jobs</div><div class="rnote">Motion / 3D designer roles</div><a href="https://dribbble.com/jobs" target="_blank">dribbble.com/jobs</a></div></div>
+    <div class="resource-card"><div class="icon purple">V</div><div><div class="rname">Animation &amp; VFX Jobs</div><div class="rnote">Remote/freelance animation roles</div><a href="https://animationandvfxjobs.com/" target="_blank">animationandvfxjobs.com</a></div></div>
+    <div class="resource-card"><div class="icon purple">E</div><div><div class="rname">EntertainmentCareers.net</div><div class="rnote">17 FX/Houdini listings</div><a href="https://www.entertainmentcareers.net/jobs/s/houdini-fx-artist/" target="_blank">entertainmentcareers.net</a></div></div>
+    <div class="resource-card"><div class="icon purple">AR</div><div><div class="rname">ARVRJobs.dev</div><div class="rnote">150+ AR/VR/spatial roles</div><a href="https://www.arvrjobs.dev/" target="_blank">arvrjobs.dev</a></div></div>
+  </div>
+
+  <h3 style="font-size:0.9rem;color:var(--text-muted);margin:1.25rem 0 0.75rem;font-weight:600;">General (filter for 3D / Motion / Houdini)</h3>
+  <div class="resource-grid">
+    <div class="resource-card"><div class="icon cyan">L</div><div><div class="rname">LinkedIn</div><div class="rnote">1,000+ remote 3D jobs, 168 Houdini</div><a href="https://www.linkedin.com/jobs/remote-3d-jobs" target="_blank">linkedin.com/jobs</a></div></div>
+    <div class="resource-card"><div class="icon cyan">G</div><div><div class="rname">Glassdoor</div><div class="rnote">269 remote motion graphics, 21 Houdini</div><a href="https://www.glassdoor.com/Job/remote-motion-graphics-jobs-SRCH_IL.0,6_IS11047_KO7,22.htm" target="_blank">glassdoor.com</a></div></div>
+    <div class="resource-card"><div class="icon cyan">I</div><div><div class="rname">Indeed</div><div class="rnote">191+ remote 3D artist jobs</div><a href="https://www.indeed.com/q-remote-3d-artist-jobs.html" target="_blank">indeed.com</a></div></div>
+    <div class="resource-card"><div class="icon cyan">Z</div><div><div class="rname">ZipRecruiter</div><div class="rnote">16 Houdini FX remote listings</div><a href="https://www.ziprecruiter.com/Jobs/Houdini-Fx-Artist-Remote" target="_blank">ziprecruiter.com</a></div></div>
+    <div class="resource-card"><div class="icon cyan">W</div><div><div class="rname">We Work Remotely</div><div class="rnote">Remote-only job board, design category</div><a href="https://weworkremotely.com/categories/remote-design-jobs" target="_blank">weworkremotely.com</a></div></div>
+    <div class="resource-card"><div class="icon cyan">D</div><div><div class="rname">DailyRemote</div><div class="rnote">3D artist + motion designer remote jobs</div><a href="https://dailyremote.com/remote-3d-artist-jobs" target="_blank">dailyremote.com</a></div></div>
+    <div class="resource-card"><div class="icon cyan">W</div><div><div class="rname">Wellfound</div><div class="rnote">Startup 3D designer / 3D artist roles</div><a href="https://wellfound.com/role/r/3d-designer" target="_blank">wellfound.com</a></div></div>
+  </div>
+</section>
+
+<!-- Communities -->
+<section id="communities">
+  <div class="section-header">
+    <h2>Communities &amp; Where Jobs Get Posted</h2>
+  </div>
+
+  <h3 style="font-size:0.9rem;color:var(--text-muted);margin-bottom:0.75rem;font-weight:600;">Facebook Groups (search and join)</h3>
+  <div class="community-grid">
+    <div class="comm-card"><div class="platform">Facebook</div><div class="name">Motion Design Community</div><div class="info">~50k+ members. Frequent "looking for artist" posts</div></div>
+    <div class="comm-card"><div class="platform">Facebook</div><div class="name">After Effects &amp; Motion Graphics</div><div class="info">~100k+ members. Huge. Jobs mixed with showcases</div></div>
+    <div class="comm-card"><div class="platform">Facebook</div><div class="name">3D Freelancers</div><div class="info">~10-20k. Specifically oriented toward hiring</div></div>
+    <div class="comm-card"><div class="platform">Facebook</div><div class="name">Cinema 4D / C4D Community</div><div class="info">~40-60k members. Job posts + showcase</div></div>
+    <div class="comm-card"><div class="platform">Facebook</div><div class="name">Houdini Artists / Houdini FX</div><div class="info">~5-15k. Niche. Occasional job posts</div></div>
+    <div class="comm-card"><div class="platform">Facebook</div><div class="name">VFX Artists Network</div><div class="info">Studio and freelance job postings</div></div>
+    <div class="comm-card"><div class="platform">Facebook</div><div class="name">3D Motion Design Jobs</div><div class="info">Smaller but specifically a job board group</div></div>
+    <div class="comm-card"><div class="platform">Facebook</div><div class="name">Freelance Motion Designers</div><div class="info">Hiring and availability posts</div></div>
+  </div>
+
+  <h3 style="font-size:0.9rem;color:var(--text-muted);margin:1.25rem 0 0.75rem;font-weight:600;">Discord Servers</h3>
+  <div class="community-grid">
+    <div class="comm-card"><div class="platform">Discord</div><div class="name">SideFX Official (Houdini)</div><div class="info">Official server. Has #jobs / #freelance channel</div><a href="https://discord.gg/houdini" target="_blank">discord.gg/houdini</a></div>
+    <div class="comm-card"><div class="platform">Discord</div><div class="name">School of Motion</div><div class="info">Alumni network with job sharing</div><a href="https://www.schoolofmotion.com" target="_blank">schoolofmotion.com</a></div>
+    <div class="comm-card"><div class="platform">Discord</div><div class="name">Real-Time VFX</div><div class="info">Game VFX and real-time 3D. Has job channel</div><a href="https://discord.gg/realtimevfx" target="_blank">discord.gg/realtimevfx</a></div>
+    <div class="comm-card"><div class="platform">Discord</div><div class="name">Motion Designers</div><div class="info">Several thousand members. Dedicated job channels</div></div>
+    <div class="comm-card"><div class="platform">Discord</div><div class="name">Cinema 4D / Maxon</div><div class="info">Some job posts in relevant channels</div></div>
+  </div>
+
+  <h3 style="font-size:0.9rem;color:var(--text-muted);margin:1.25rem 0 0.75rem;font-weight:600;">Forums &amp; Reddit</h3>
+  <div class="community-grid">
+    <div class="comm-card"><div class="platform">Forum</div><div class="name">odforce.net</div><div class="info">Original Houdini community. Has Jobs section. Veteran artists</div><a href="https://forums.odforce.net" target="_blank">forums.odforce.net</a></div>
+    <div class="comm-card"><div class="platform">Forum</div><div class="name">Polycount</div><div class="info">Game art focused. Dedicated Job Board section</div><a href="https://polycount.com" target="_blank">polycount.com</a></div>
+    <div class="comm-card"><div class="platform">Forum</div><div class="name">CGSociety</div><div class="info">Longstanding CG community. Job listings section</div><a href="https://www.cgsociety.org" target="_blank">cgsociety.org</a></div>
+    <div class="comm-card"><div class="platform">Reddit</div><div class="name">r/vfx</div><div class="info">~150k members. Regular job/career posts</div><a href="https://reddit.com/r/vfx" target="_blank">reddit.com/r/vfx</a></div>
+    <div class="comm-card"><div class="platform">Reddit</div><div class="name">r/MotionDesign</div><div class="info">~100k+ members. Job posts with hiring flairs</div><a href="https://reddit.com/r/MotionDesign" target="_blank">reddit.com/r/MotionDesign</a></div>
+    <div class="comm-card"><div class="platform">Reddit</div><div class="name">r/Houdini</div><div class="info">~60-80k members. Check [Hiring] flair</div><a href="https://reddit.com/r/Houdini" target="_blank">reddit.com/r/Houdini</a></div>
+    <div class="comm-card"><div class="platform">Reddit</div><div class="name">r/forhire</div><div class="info">General freelance. [Hiring] posts for 3D/motion work</div><a href="https://reddit.com/r/forhire" target="_blank">reddit.com/r/forhire</a></div>
+  </div>
+
+  <h3 style="font-size:0.9rem;color:var(--text-muted);margin:1.25rem 0 0.75rem;font-weight:600;">Twitter/X Hashtags</h3>
+  <div class="chip-wrap">
+    <span class="chip">#motiongraphics</span>
+    <span class="chip">#motiondesign</span>
+    <span class="chip">#houdini</span>
+    <span class="chip">#houdinifx</span>
+    <span class="chip">#3djobs</span>
+    <span class="chip">#vfxjobs</span>
+    <span class="chip">#c4d</span>
+    <span class="chip">#mograph</span>
+    <span class="chip">#hiringcreatives</span>
+    <span class="chip">#creativejobs</span>
+  </div>
+</section>
+
+<!-- Freelance -->
+<section id="freelance">
+  <div class="section-header">
+    <h2>Freelance Platforms &amp; Talent Networks</h2>
+  </div>
+  <div class="resource-grid">
+    <div class="resource-card"><div class="icon green">U</div><div><div class="rname">Upwork</div><div class="rnote">112 Houdini jobs currently listed</div><a href="https://www.upwork.com/freelance-jobs/houdini/" target="_blank">upwork.com/freelance-jobs/houdini</a></div></div>
+    <div class="resource-card"><div class="icon green">W</div><div><div class="rname">Working Not Working</div><div class="rnote">Set availability, studios reach out. Strong in motion/3D</div><a href="https://workingnotworking.com" target="_blank">workingnotworking.com</a></div></div>
+    <div class="resource-card"><div class="icon green">Y</div><div><div class="rname">YunoJuno</div><div class="rnote">Fee-free, 120k+ vetted freelancers. 3D designers category</div><a href="https://www.yunojuno.com/sub-disciplines/3d-designers" target="_blank">yunojuno.com</a></div></div>
+    <div class="resource-card"><div class="icon green">T</div><div><div class="rname">Toptal</div><div class="rnote">Higher-end freelance, some 3D/design roles</div><a href="https://www.toptal.com" target="_blank">toptal.com</a></div></div>
+    <div class="resource-card"><div class="icon green">M</div><div><div class="rname">Mandy.com</div><div class="rnote">Film/TV/VFX crew jobs</div><a href="https://www.mandy.com" target="_blank">mandy.com</a></div></div>
+    <div class="resource-card"><div class="icon green">S</div><div><div class="rname">StaffMeUp</div><div class="rnote">Entertainment/production staffing</div><a href="https://www.staffmeup.com" target="_blank">staffmeup.com</a></div></div>
+  </div>
+
+  <h3 style="font-size:0.9rem;color:var(--text-muted);margin:1.25rem 0 0.75rem;font-weight:600;">Recruitment Agencies (Creative/3D)</h3>
+  <div class="resource-grid">
+    <div class="resource-card"><div class="icon orange">A</div><div><div class="rname">Aquent / Vitamin T</div><div class="rnote">Top agency for placed 3D/motion roles</div><a href="https://aquent.com/find-work" target="_blank">aquent.com</a></div></div>
+    <div class="resource-card"><div class="icon orange">C</div><div><div class="rname">Creative Circle</div><div class="rnote">Creative staffing, motion/3D</div><a href="https://candidateportal.creativecircle.com/" target="_blank">creativecircle.com</a></div></div>
+    <div class="resource-card"><div class="icon orange">C</div><div><div class="rname">Creativepool</div><div class="rnote">UK-focused creative jobs + network</div><a href="https://creativepool.com" target="_blank">creativepool.com</a></div></div>
+    <div class="resource-card"><div class="icon orange">T</div><div><div class="rname">The Dots</div><div class="rnote">Creative networking + jobs</div><a href="https://the-dots.com" target="_blank">the-dots.com</a></div></div>
+  </div>
+</section>
+
+<!-- Salaries -->
+<section id="salaries">
+  <div class="section-header">
+    <h2>Salary &amp; Rate Benchmarks</h2>
+  </div>
+  <div class="salary-grid">
+    <div class="salary-card">
+      <div class="role">3D Motion Designer (Remote)</div>
+      <div class="salary-bar-track"><div class="salary-bar-fill" style="width:55%"></div></div>
+      <div class="salary-vals"><span>$61k</span><span class="highlight">$81k avg</span><span>$109k</span></div>
+    </div>
+    <div class="salary-card">
+      <div class="role">Senior Motion Designer (Agency)</div>
+      <div class="salary-bar-track"><div class="salary-bar-fill" style="width:72%"></div></div>
+      <div class="salary-vals"><span>$80k</span><span class="highlight">$100-150k</span><span>$193k</span></div>
+    </div>
+    <div class="salary-card">
+      <div class="role">Houdini FX Artist</div>
+      <div class="salary-bar-track"><div class="salary-bar-fill" style="width:85%"></div></div>
+      <div class="salary-vals"><span>$92k</span><span class="highlight">$118/hr avg</span><span>$400k+</span></div>
+    </div>
+    <div class="salary-card">
+      <div class="role">3D Designer (Tech / AR / VR)</div>
+      <div class="salary-bar-track"><div class="salary-bar-fill" style="width:78%"></div></div>
+      <div class="salary-vals"><span>$99k</span><span class="highlight">$133-256k</span><span>$313k (Snap)</span></div>
+    </div>
+    <div class="salary-card">
+      <div class="role">Freelance Day Rate</div>
+      <div class="salary-bar-track"><div class="salary-bar-fill" style="width:60%"></div></div>
+      <div class="salary-vals"><span>$500/day (jr)</span><span class="highlight">$750/day</span><span>$1,000/day (sr)</span></div>
+    </div>
+    <div class="salary-card">
+      <div class="role">Remote 3D Artist (Average)</div>
+      <div class="salary-bar-track"><div class="salary-bar-fill" style="width:50%"></div></div>
+      <div class="salary-vals"><span>$60k</span><span class="highlight">$99k avg</span><span>$150k</span></div>
+    </div>
+  </div>
+  <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.75rem;">Sources: ZipRecruiter, Glassdoor, School of Motion 2026 Salary Guide. USD figures. AI-fluent designers command a 15-50% salary premium.</p>
+
+  <div style="margin-top:1.5rem;">
+    <div class="section-header"><h2>Search Terms to Use</h2></div>
+    <div class="chip-wrap">
+      <span class="chip">3D Designer</span>
+      <span class="chip">3D Motion Designer</span>
+      <span class="chip">3D Motion Graphics</span>
+      <span class="chip">Houdini Artist</span>
+      <span class="chip">Houdini FX Artist</span>
+      <span class="chip">Houdini TD</span>
+      <span class="chip">Houdini Technical Director</span>
+      <span class="chip">Motion Graphics Designer</span>
+      <span class="chip">3D Generalist</span>
+      <span class="chip">3D Animator</span>
+      <span class="chip">FX Artist</span>
+      <span class="chip">CG Artist</span>
+      <span class="chip">Technical Artist</span>
+      <span class="chip">Procedural Artist</span>
+      <span class="chip">Creature FX TD</span>
+      <span class="chip">Real-Time VFX Artist</span>
+      <span class="chip">Spatial Designer</span>
+      <span class="chip">AR/VR Designer</span>
+    </div>
+  </div>
+</section>
+
+<!-- Tips -->
+<section id="tips">
+  <div class="section-header">
+    <h2>Tips for Landing Remote 3D / Houdini Work</h2>
+  </div>
+  <ol class="tips-list">
+    <li><strong>Portfolio on ArtStation is non-negotiable.</strong> Studios and recruiters search ArtStation first. Keep it current with your best 3D/motion/Houdini work.</li>
+    <li><strong>SideFX Forum is the #1 source for Houdini gigs.</strong> The Jobs subforum at sidefx.com/forum/60 has direct-from-studio posts that don't appear on LinkedIn.</li>
+    <li><strong>Set yourself "available" on Working Not Working.</strong> Studios actively reach out to talent there. Strong in motion/3D freelance.</li>
+    <li><strong>Join the Facebook groups.</strong> "Motion Design Community" and "After Effects &amp; Motion Graphics" have the highest volume of informal "looking for a 3D designer" posts.</li>
+    <li><strong>Join the SideFX Official Discord</strong> (discord.gg/houdini). Has dedicated #jobs and #freelance channels.</li>
+    <li><strong>Tech companies pay the most.</strong> Apple, Meta, Snap, and Epic pay $133k-$313k for 3D/spatial roles. Remote options are growing.</li>
+    <li><strong>AI skills are a salary multiplier.</strong> Designers fluent in AI tools command a 15-50% premium. Worth learning.</li>
+    <li><strong>Motionographer is the industry gold standard.</strong> Subscribe to their newsletter for curated job listings from top studios.</li>
+    <li><strong>VFX studios are mostly hybrid/onsite</strong> (Vancouver, London, Montreal). For fully remote Houdini work, target freelance contracts and tech companies.</li>
+    <li><strong>Monitor Twitter/X daily.</strong> Search "hiring motion designer" or "looking for Houdini artist" for real-time leads that never make it to job boards.</li>
+  </ol>
+</section>
+
+</div>
+
+<footer>
+  Compiled 3 April 2026. Data sourced from LinkedIn, Indeed, Glassdoor, ZipRecruiter, Dribbble, ArtStation, Motionographer, SideFX Forums, We Work Remotely, DailyRemote, studio careers pages, and community research.<br>
+  Built for Jimi.
+</footer>
+
+<script>
+  document.querySelectorAll('.nav a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      document.querySelectorAll('.nav a').forEach(n => n.classList.remove('active'));
+      a.classList.add('active');
+    });
+  });
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
+    navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+  });
+</script>
+</body>
+</html>
