@@ -482,21 +482,153 @@ Jimi Richardson</div>
 
 </section>
 
-<!-- Application Tracker -->
+<!-- Cold Outreach to Studios & Agencies -->
 <section>
-  <h2>Application Tracker</h2>
-  <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.75rem;">Click the status button to cycle through: Not Applied &rarr; Applied &rarr; Interview &rarr; Rejected. Saves to your browser.</p>
-  <div class="tracker" id="tracker">
-    <div class="tracker-row"><span class="company">Mercury</span><span class="role-name">Sr Brand Designer, Motion & 3D</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'mercury-3d')">Not Applied</button></div>
-    <div class="tracker-row"><span class="company">Vercel</span><span class="role-name">Senior Brand Designer</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'vercel')">Not Applied</button></div>
-    <div class="tracker-row"><span class="company">Prospekt</span><span class="role-name">Senior 3D & Motion Designer</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'prospekt')">Not Applied</button></div>
-    <div class="tracker-row"><span class="company">GM</span><span class="role-name">Technical Artist (Houdini)</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'gm-tech')">Not Applied</button></div>
-    <div class="tracker-row"><span class="company">GM</span><span class="role-name">Motion Designer</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'gm-motion')">Not Applied</button></div>
-    <div class="tracker-row"><span class="company">CoSA VFX</span><span class="role-name">FX Houdini Artist</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'cosa')">Not Applied</button></div>
-    <div class="tracker-row"><span class="company">Metalab</span><span class="role-name">Sr Brand Designer (Marketing)</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'metalab')">Not Applied</button></div>
-    <div class="tracker-row"><span class="company">Automattic</span><span class="role-name">Brand / Creative Designer</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'automattic')">Not Applied</button></div>
-    <div class="tracker-row"><span class="company">LuckyRush</span><span class="role-name">Senior Creative Designer</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'luckyrush')">Not Applied</button></div>
-    <div class="tracker-row"><span class="company">Base Design</span><span class="role-name">Interaction Designer 3D & Motion</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'base')">Not Applied</button></div>
+  <h2>Introduce Yourself to Studios (Cold Outreach)</h2>
+  <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem;">Not every opportunity comes from a job listing. These templates are for reaching out to studios and agencies directly, even when they're not advertising. Copy the email, swap the studio name, and send.</p>
+
+  <div class="copy-block">
+    <div class="label">General Studio Introduction (for any creative/motion studio)</div>
+    <div class="content" id="cold-general">Subject: 3D Motion Designer, Houdini Specialist - Available for Projects
+
+Hi,
+
+I'm Jimi Richardson, an independent 3D motion designer specialising in Houdini simulation, product animation, and immersive brand visuals.
+
+I work with health, beauty, and beverage brands, creating cinematic product animations and CGI content. Clients include Jurlique, Royal Salute, MCO Beauty, Shaw + Smith, and Minirig. I bring a photographer's eye to every render, with 20+ years of visual experience.
+
+I'd love to be considered for any upcoming projects or freelance opportunities where my Houdini and product animation skills could be useful.
+
+Portfolio: jimirichardson.com
+Showreel and recent work are on the site.
+
+Happy to jump on a quick call anytime.
+
+Jimi Richardson
+jimi@jimirichardson.com
+jimirichardson.com</div>
+    <button class="copy-btn" onclick="copyText('cold-general', this)">Copy</button>
+  </div>
+
+  <div class="copy-block">
+    <div class="label">For Branding Agencies (Pentagram, COLLINS, Wolff Olins, Base Design, etc.)</div>
+    <div class="content" id="cold-branding">Subject: 3D & Motion for Brand Identity Projects
+
+Hi,
+
+I'm a 3D motion designer who specialises in brand-led product animation and immersive visuals. I work at the intersection of brand identity and 3D, creating cinematic hero shots and motion content for premium brands.
+
+My recent work includes product animations for Jurlique (skincare), Royal Salute (spirits), MCO Beauty, and Minirig (audio). I use Houdini for simulation work and bring a photographer's sensibility to light, texture, and material.
+
+I'd love to collaborate on any upcoming brand projects where 3D and motion could elevate the work. Available for freelance or project-based work globally.
+
+Portfolio: jimirichardson.com
+
+Jimi Richardson
+jimi@jimirichardson.com</div>
+    <button class="copy-btn" onclick="copyText('cold-branding', this)">Copy</button>
+  </div>
+
+  <div class="copy-block">
+    <div class="label">For Product CGI / Packshot Studios</div>
+    <div class="content" id="cold-cgi">Subject: Houdini Product Animator - Available for CGI Projects
+
+Hi,
+
+I specialise in CGI product animation using Houdini, with a focus on health, beauty, and beverage brands. My work covers hero product shots, liquid simulations, material studies, and full motion sequences.
+
+Recent clients: Jurlique, MCO Beauty, Phyco Health, Royal Salute, Shaw + Smith.
+
+I bring 20+ years of photography and moving image experience to every render, which means every frame is composed and lit with the attention of a photographer. Available for freelance and contract work, remote globally.
+
+Portfolio: jimirichardson.com
+
+Jimi Richardson
+jimi@jimirichardson.com</div>
+    <button class="copy-btn" onclick="copyText('cold-cgi', this)">Copy</button>
+  </div>
+
+  <div class="copy-block">
+    <div class="label">For VFX Studios (Framestore, DNEG, The Mill, etc.)</div>
+    <div class="content" id="cold-vfx">Subject: Houdini FX Artist - Simulation Specialist
+
+Hi,
+
+I'm a Houdini specialist with deep experience in simulation workflows, including fluid dynamics, particles, and procedural effects. While my primary focus has been on product animation and brand content for clients like Jurlique and Royal Salute, my simulation skills are directly transferable to VFX work.
+
+I'd welcome the opportunity to contribute to upcoming projects as a freelance Houdini FX artist. Available for remote work.
+
+Portfolio: jimirichardson.com
+LinkedIn: linkedin.com/in/jimirichardson
+
+Jimi Richardson
+jimi@jimirichardson.com</div>
+    <button class="copy-btn" onclick="copyText('cold-vfx', this)">Copy</button>
+  </div>
+
+  <h3 style="margin-top:1.25rem;margin-bottom:0.75rem;">Studios to Contact (with email/careers links)</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.5rem;">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.85rem;"><strong>Buck</strong> <span style="color:var(--text-muted);">- LA, NY, Sydney</span><br><a href="mailto:careers@buck.co" style="color:var(--cyan);text-decoration:none;">careers@buck.co</a></div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.85rem;"><strong>&amp;Walsh</strong> <span style="color:var(--text-muted);">- NY (remote freelance)</span><br><a href="mailto:team@andwalsh.com" style="color:var(--cyan);text-decoration:none;">team@andwalsh.com</a></div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.85rem;"><strong>ManvsMachine</strong> <span style="color:var(--text-muted);">- London, LA</span><br><a href="https://mvsm.com/jobs/super-talent" style="color:var(--cyan);text-decoration:none;" target="_blank">Open talent call</a></div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.85rem;"><strong>Pentagram</strong> <span style="color:var(--text-muted);">- Global</span><br><a href="https://www.pentagram.com/careers" style="color:var(--cyan);text-decoration:none;" target="_blank">Portfolio submission</a></div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.85rem;"><strong>Base Design</strong> <span style="color:var(--text-muted);">- Brussels, NY, Melbourne</span><br><a href="https://www.basedesign.com/jobs" style="color:var(--cyan);text-decoration:none;" target="_blank">9 roles open</a></div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.85rem;"><strong>Tendril</strong> <span style="color:var(--text-muted);">- Toronto</span><br><a href="https://tendril.studio" style="color:var(--cyan);text-decoration:none;" target="_blank">tendril.studio</a></div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.85rem;"><strong>Ordinary Folk</strong> <span style="color:var(--text-muted);">- Vancouver</span><br><a href="https://www.ordinaryfolk.co" style="color:var(--cyan);text-decoration:none;" target="_blank">ordinaryfolk.co</a></div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.85rem;"><strong>The Mill</strong> <span style="color:var(--text-muted);">- London, NY, LA</span><br><a href="https://www.themill.com/join-us/" style="color:var(--cyan);text-decoration:none;" target="_blank">themill.com/join-us</a></div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.85rem;"><strong>Superside</strong> <span style="color:var(--text-muted);">- Fully remote</span><br><a href="https://careers.superside.com/jobs" style="color:var(--cyan);text-decoration:none;" target="_blank">careers.superside.com</a></div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.85rem;"><strong>UNIT9</strong> <span style="color:var(--text-muted);">- London, LA, NY, Berlin</span><br><a href="https://www.unit9.com/jobs/" style="color:var(--cyan);text-decoration:none;" target="_blank">unit9.com/jobs</a></div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.85rem;"><strong>DEPT</strong> <span style="color:var(--text-muted);">- Global, 330+ roles</span><br><a href="https://www.deptagency.com/careers/roles/" style="color:var(--cyan);text-decoration:none;" target="_blank">deptagency.com/careers</a></div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.85rem;"><strong>Instrument</strong> <span style="color:var(--text-muted);">- Portland, remote US</span><br><a href="https://www.instrument.com/careers/" style="color:var(--cyan);text-decoration:none;" target="_blank">instrument.com/careers</a></div>
+  </div>
+</section>
+
+<!-- Outreach & Application Tracker -->
+<section>
+  <h2>Outreach &amp; Application Tracker</h2>
+  <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">Track job applications AND cold outreach to studios. Click status to cycle. Add your own entries below. All data saves to your browser.</p>
+
+  <div style="margin-bottom:0.75rem;">
+    <h3 style="font-size:0.85rem;color:var(--accent-light);margin-bottom:0.5rem;">Job Applications</h3>
+    <div class="tracker" id="tracker">
+      <div class="tracker-row"><span class="company">Mercury</span><span class="role-name">Sr Brand Designer, Motion & 3D</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'mercury-3d')">Not Applied</button></div>
+      <div class="tracker-row"><span class="company">Vercel</span><span class="role-name">Senior Brand Designer</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'vercel')">Not Applied</button></div>
+      <div class="tracker-row"><span class="company">Prospekt</span><span class="role-name">Senior 3D & Motion Designer</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'prospekt')">Not Applied</button></div>
+      <div class="tracker-row"><span class="company">GM</span><span class="role-name">Technical Artist (Houdini)</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'gm-tech')">Not Applied</button></div>
+      <div class="tracker-row"><span class="company">GM</span><span class="role-name">Motion Designer</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'gm-motion')">Not Applied</button></div>
+      <div class="tracker-row"><span class="company">CoSA VFX</span><span class="role-name">FX Houdini Artist</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'cosa')">Not Applied</button></div>
+      <div class="tracker-row"><span class="company">Metalab</span><span class="role-name">Sr Brand Designer (Marketing)</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'metalab')">Not Applied</button></div>
+      <div class="tracker-row"><span class="company">Automattic</span><span class="role-name">Brand / Creative Designer</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'automattic')">Not Applied</button></div>
+      <div class="tracker-row"><span class="company">LuckyRush</span><span class="role-name">Senior Creative Designer</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'luckyrush')">Not Applied</button></div>
+      <div class="tracker-row"><span class="company">Base Design</span><span class="role-name">Interaction Designer 3D & Motion</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'base')">Not Applied</button></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:0.75rem;">
+    <h3 style="font-size:0.85rem;color:var(--accent-light);margin-bottom:0.5rem;">Studio Outreach</h3>
+    <div class="tracker" id="outreach-tracker">
+      <div class="tracker-row"><span class="company">Buck</span><span class="role-name">Cold email to careers@buck.co</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'out-buck')">Not Sent</button></div>
+      <div class="tracker-row"><span class="company">&Walsh</span><span class="role-name">Cold email to team@andwalsh.com</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'out-walsh')">Not Sent</button></div>
+      <div class="tracker-row"><span class="company">ManvsMachine</span><span class="role-name">Open talent submission</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'out-mvsm')">Not Sent</button></div>
+      <div class="tracker-row"><span class="company">Pentagram</span><span class="role-name">Portfolio submission</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'out-pentagram')">Not Sent</button></div>
+      <div class="tracker-row"><span class="company">Base Design</span><span class="role-name">Application / outreach</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'out-base')">Not Sent</button></div>
+      <div class="tracker-row"><span class="company">Tendril</span><span class="role-name">Cold outreach</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'out-tendril')">Not Sent</button></div>
+      <div class="tracker-row"><span class="company">Ordinary Folk</span><span class="role-name">Cold outreach</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'out-ordinary')">Not Sent</button></div>
+      <div class="tracker-row"><span class="company">The Mill</span><span class="role-name">Application / outreach</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'out-mill')">Not Sent</button></div>
+      <div class="tracker-row"><span class="company">UNIT9</span><span class="role-name">Application / outreach</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'out-unit9')">Not Sent</button></div>
+      <div class="tracker-row"><span class="company">Superside</span><span class="role-name">Application</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'out-superside')">Not Sent</button></div>
+      <div class="tracker-row"><span class="company">DEPT</span><span class="role-name">Application / outreach</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'out-dept')">Not Sent</button></div>
+      <div class="tracker-row"><span class="company">Instrument</span><span class="role-name">Application / outreach</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'out-instrument')">Not Sent</button></div>
+    </div>
+  </div>
+
+  <div style="margin-top:1rem;">
+    <h3 style="font-size:0.85rem;color:var(--accent-light);margin-bottom:0.5rem;">Add Your Own</h3>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+      <input type="text" id="new-company" placeholder="Company" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.5rem 0.75rem;color:var(--text);font-size:0.85rem;width:150px;">
+      <input type="text" id="new-role" placeholder="Role or what you sent" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.5rem 0.75rem;color:var(--text);font-size:0.85rem;flex:1;min-width:200px;">
+      <button onclick="addTrackerRow()" style="background:var(--cyan);color:var(--bg);border:none;border-radius:var(--radius-sm);padding:0.5rem 1rem;font-weight:600;font-size:0.85rem;cursor:pointer;">Add</button>
+    </div>
   </div>
 </section>
 
@@ -530,6 +662,8 @@ Jimi Richardson</div>
   // Application tracker with localStorage
   const statuses = ['not-applied', 'applied', 'interview', 'rejected'];
   const statusLabels = { 'not-applied': 'Not Applied', 'applied': 'Applied', 'interview': 'Interview', 'rejected': 'Rejected' };
+  // Outreach uses same system but different initial label
+  const outreachLabels = { 'not-applied': 'Not Sent', 'applied': 'Sent', 'interview': 'Replied', 'rejected': 'No Response' };
 
   function cycleStatus(btn, roleId) {
     const current = statuses.find(s => btn.classList.contains(s));
@@ -543,16 +677,50 @@ Jimi Richardson</div>
     localStorage.setItem('jimi-tracker', JSON.stringify(saved));
   }
 
-  // Load saved statuses
+  // Add custom tracker row
+  function addTrackerRow() {
+    const company = document.getElementById('new-company').value.trim();
+    const role = document.getElementById('new-role').value.trim();
+    if (!company || !role) return;
+    const id = 'custom-' + Date.now();
+    const tracker = document.getElementById('outreach-tracker');
+    const row = document.createElement('div');
+    row.className = 'tracker-row';
+    row.innerHTML = `<span class="company">${company}</span><span class="role-name">${role}</span><button class="status-btn not-applied" onclick="cycleStatus(this, '${id}')">Not Sent</button>`;
+    tracker.appendChild(row);
+    // Save custom rows
+    const custom = JSON.parse(localStorage.getItem('jimi-custom-rows') || '[]');
+    custom.push({ id, company, role });
+    localStorage.setItem('jimi-custom-rows', JSON.stringify(custom));
+    // Clear inputs
+    document.getElementById('new-company').value = '';
+    document.getElementById('new-role').value = '';
+  }
+
+  // Load saved statuses + custom rows
   window.addEventListener('DOMContentLoaded', () => {
     const saved = JSON.parse(localStorage.getItem('jimi-tracker') || '{}');
+    // Update labels for outreach rows (use outreach labels for out- prefixed IDs)
     for (const [roleId, status] of Object.entries(saved)) {
       const btn = document.querySelector(`[onclick*="'${roleId}'"]`);
       if (btn) {
         btn.classList.remove(...statuses);
         btn.classList.add(status);
-        btn.textContent = statusLabels[status];
+        btn.textContent = roleId.startsWith('out-') || roleId.startsWith('custom-')
+          ? outreachLabels[status]
+          : statusLabels[status];
       }
+    }
+    // Restore custom rows
+    const custom = JSON.parse(localStorage.getItem('jimi-custom-rows') || '[]');
+    const tracker = document.getElementById('outreach-tracker');
+    for (const { id, company, role } of custom) {
+      const row = document.createElement('div');
+      row.className = 'tracker-row';
+      const st = saved[id] || 'not-applied';
+      const label = outreachLabels[st];
+      row.innerHTML = `<span class="company">${company}</span><span class="role-name">${role}</span><button class="status-btn ${st}" onclick="cycleStatus(this, '${id}')">${label}</button>`;
+      tracker.appendChild(row);
     }
   });
 </script>
