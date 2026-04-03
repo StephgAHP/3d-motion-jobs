@@ -59,18 +59,21 @@
   .stat .num { font-size: 1.6rem; font-weight: 700; color: var(--cyan-light); }
   .stat .label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
-  .nav-wrapper { position: sticky; top: 0; z-index: 100; background: rgba(10,10,15,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
-  .nav-grouped { max-width: 1200px; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: none; padding: 0 0.5rem; }
-  .nav-grouped::-webkit-scrollbar { display: none; }
-  .nav-group { display: flex; align-items: center; border-right: 1px solid var(--border); }
-  .nav-group:last-child { border-right: none; }
-  .nav-label { color: var(--text-muted); font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 0.5rem 0 0.75rem; white-space: nowrap; opacity: 0.7; }
-  .nav-items { display: flex; }
-  .nav-items a { color: var(--text-muted); text-decoration: none; padding: 0.75rem 0.6rem; font-size: 0.78rem; font-weight: 500; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; }
-  .nav-items a:hover, .nav-items a.active { color: var(--cyan); border-bottom-color: var(--accent); }
-  /* keep old .nav styles for JS compatibility */
-  .nav a { color: var(--text-muted); text-decoration: none; padding: 0.85rem 1rem; font-size: 0.82rem; font-weight: 500; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; }
-  .nav a:hover, .nav a.active { color: var(--cyan); border-bottom-color: var(--accent); }
+  .nav-wrapper { position: sticky; top: 0; z-index: 100; background: rgba(10,10,15,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-bar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; padding: 0; }
+  .nav-dropdown { position: relative; }
+  .nav-parent { color: var(--text); text-decoration: none; padding: 0.85rem 1.25rem; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.35rem; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.15s; white-space: nowrap; }
+  .nav-parent:hover { color: var(--cyan); }
+  .nav-parent .caret { font-size: 0.55rem; opacity: 0.5; transition: transform 0.2s; }
+  .nav-dropdown:hover .caret, .nav-dropdown.open .caret { transform: rotate(180deg); }
+  .nav-children { display: none; position: absolute; top: 100%; left: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 0 0 var(--radius-sm) var(--radius-sm); min-width: 200px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: 200; }
+  .nav-dropdown:hover .nav-children, .nav-dropdown.open .nav-children { display: block; }
+  .nav-children a { display: block; color: var(--text-muted); text-decoration: none; padding: 0.6rem 1rem; font-size: 0.82rem; font-weight: 500; transition: all 0.12s; border-left: 2px solid transparent; }
+  .nav-children a:hover { color: var(--cyan); background: var(--surface-2); border-left-color: var(--cyan); }
+  .nav-children a.active { color: var(--cyan); border-left-color: var(--cyan); }
+  /* old .nav a for JS compat */
+  .nav-items a { color: var(--text-muted); text-decoration: none; }
+  .nav-items a.active { color: var(--cyan); }
 
   .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
   section { margin-bottom: 2.5rem; scroll-margin-top: 60px; }
@@ -112,6 +115,35 @@
   .job-card .link-row { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
   .kit-link { display: inline-flex; align-items: center; gap: 0.3rem; background: rgba(34,211,238,0.12); color: var(--cyan-light); text-decoration: none; font-size: 0.78rem; font-weight: 600; padding: 0.3rem 0.7rem; border-radius: 99px; border: 1px solid rgba(34,211,238,0.25); transition: all 0.15s; }
   .kit-link:hover { background: rgba(34,211,238,0.25); border-color: var(--cyan); }
+
+  /* CRM */
+  .crm-table { width: 100%; border-collapse: collapse; }
+  .crm-table th { text-align: left; font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); }
+  .crm-table td { padding: 0.55rem 0.6rem; border-bottom: 1px solid var(--border); font-size: 0.82rem; vertical-align: middle; }
+  .crm-table tr:hover { background: var(--surface-2); }
+  .crm-company { color: var(--cyan); font-weight: 600; font-size: 0.78rem; }
+  .crm-role { color: var(--text); }
+  .crm-date { color: var(--text-muted); font-size: 0.75rem; white-space: nowrap; }
+  .crm-notes { background: transparent; border: 1px solid transparent; color: var(--text-muted); font-size: 0.78rem; padding: 0.2rem 0.4rem; border-radius: 4px; width: 100%; font-family: inherit; }
+  .crm-notes:focus { border-color: var(--border); outline: none; background: var(--surface-2); color: var(--text); }
+  .crm-status { padding: 0.2rem 0.6rem; border-radius: 99px; font-size: 0.68rem; font-weight: 600; cursor: pointer; border: none; white-space: nowrap; transition: all 0.15s; }
+  .crm-status:hover { filter: brightness(1.2); }
+  .s-new { background: rgba(136,136,168,0.2); color: var(--text-muted); }
+  .s-viewed { background: rgba(251,191,36,0.2); color: #fbbf24; }
+  .s-pitched { background: rgba(34,211,238,0.2); color: var(--cyan); }
+  .s-applied { background: rgba(124,58,237,0.2); color: var(--accent-light); }
+  .s-interview { background: rgba(52,211,153,0.2); color: var(--green); }
+  .s-offer { background: rgba(52,211,153,0.35); color: var(--green); }
+  .s-rejected { background: rgba(248,113,113,0.15); color: var(--red); }
+  .crm-add { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+  .crm-add input { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.5rem 0.75rem; color: var(--text); font-size: 0.85rem; font-family: inherit; }
+  .crm-add input:focus { border-color: var(--cyan); outline: none; }
+  .crm-add button { background: var(--cyan); color: var(--bg); border: none; border-radius: var(--radius-sm); padding: 0.5rem 1rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; }
+  .crm-add button:hover { background: var(--cyan-light); }
+  .crm-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow-x: auto; }
+  .crm-actions { display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap; }
+  .crm-btn { background: var(--surface-2); border: 1px solid var(--border); color: var(--text-muted); padding: 0.4rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.78rem; font-weight: 500; cursor: pointer; transition: all 0.15s; }
+  .crm-btn:hover { border-color: var(--cyan); color: var(--cyan); }
   .job-card .apply-link:hover { color: #fff; }
   .arrow-svg { display: inline; vertical-align: middle; width: 14px; height: 14px; }
 
@@ -162,10 +194,11 @@
     .hero .stats-bar { gap: 0.75rem; }
     .stat .num { font-size: 1.2rem; }
     .stat .label { font-size: 0.65rem; }
-    .nav-label { display: none; }
-    .nav-group { border-right: none; }
-    .nav-items a { padding: 0.65rem 0.55rem; font-size: 0.72rem; }
-    .nav a { padding: 0.65rem 0.55rem; font-size: 0.72rem; }
+    .nav-bar { justify-content: stretch; }
+    .nav-dropdown { flex: 1; }
+    .nav-parent { padding: 0.75rem 0.6rem; font-size: 0.78rem; justify-content: center; }
+    .nav-children { left: 0; right: 0; min-width: unset; }
+    .nav-children a { font-size: 0.78rem; padding: 0.55rem 0.85rem; }
     .container { padding: 1rem; }
     .jobs-grid, .resource-grid, .community-grid, .salary-grid { grid-template-columns: 1fr; }
     .job-card { padding: 1rem; }
@@ -218,42 +251,42 @@
 </header>
 
 <div class="nav-wrapper">
-  <nav class="nav-grouped">
-    <div class="nav-group">
-      <span class="nav-label">Jobs</span>
-      <div class="nav-items">
-        <a href="#top-picks" class="active">Best Matches</a>
-        <a href="#creative">Brand</a>
-        <a href="#motion">3D / Motion</a>
-        <a href="#houdini">Houdini / FX</a>
+  <div class="nav-bar">
+    <div class="nav-dropdown">
+      <span class="nav-parent">Jobs <span class="caret">&#9662;</span></span>
+      <div class="nav-children nav-items">
+        <a href="#top-picks">Best Matches for You</a>
+        <a href="#creative">Brand &amp; Creative</a>
+        <a href="#motion">3D &amp; Motion Design</a>
+        <a href="#houdini">Houdini &amp; FX</a>
       </div>
     </div>
-    <div class="nav-group">
-      <span class="nav-label">Employers</span>
-      <div class="nav-items">
-        <a href="#studios-creative">Studios</a>
+    <div class="nav-dropdown">
+      <span class="nav-parent">Employers <span class="caret">&#9662;</span></span>
+      <div class="nav-children nav-items">
+        <a href="#studios-creative">Studios &amp; Agencies</a>
         <a href="#tech">Tech Companies</a>
       </div>
     </div>
-    <div class="nav-group">
-      <span class="nav-label">Resources</span>
-      <div class="nav-items">
+    <div class="nav-dropdown">
+      <span class="nav-parent">Resources <span class="caret">&#9662;</span></span>
+      <div class="nav-children nav-items">
         <a href="apply.html">Pitches &amp; Outreach</a>
         <a href="#boards">Job Boards</a>
         <a href="#communities">Communities</a>
-        <a href="#freelance">Freelance</a>
+        <a href="#freelance">Freelance Platforms</a>
       </div>
     </div>
-    <div class="nav-group">
-      <span class="nav-label">Learn</span>
-      <div class="nav-items">
+    <div class="nav-dropdown">
+      <span class="nav-parent">Learn <span class="caret">&#9662;</span></span>
+      <div class="nav-children nav-items">
         <a href="#salaries">Pay Rates</a>
-        <a href="#ai-tools">AI Tools</a>
-        <a href="#tips">Tips</a>
-        <a href="gmail-setup.html">Gmail CRM</a>
+        <a href="#ai-tools">AI Tools for Houdini</a>
+        <a href="#tips">Tips for Getting Hired</a>
+        <a href="gmail-setup.html">Gmail CRM Setup</a>
       </div>
     </div>
-  </nav>
+  </div>
 </div>
 
 <div class="container">
@@ -1614,23 +1647,47 @@
 </footer>
 
 <script>
-  // Smooth scroll for all nav links (both old .nav and new .nav-items)
-  document.querySelectorAll('.nav-items a, .nav a').forEach(a => {
+  // Mobile: tap to toggle dropdown (hover doesn't work on touch)
+  document.querySelectorAll('.nav-parent').forEach(parent => {
+    parent.addEventListener('click', e => {
+      const dropdown = parent.closest('.nav-dropdown');
+      const wasOpen = dropdown.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+      // Toggle this one
+      if (!wasOpen) dropdown.classList.add('open');
+    });
+  });
+  // Close dropdowns when clicking a child link or outside
+  document.querySelectorAll('.nav-children a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+    });
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+    }
+  });
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('.nav-children a').forEach(a => {
     const href = a.getAttribute('href');
-    if (!href || !href.startsWith('#')) return; // skip external links like apply.html
+    if (!href || !href.startsWith('#')) return;
     a.addEventListener('click', e => {
       e.preventDefault();
       const target = document.querySelector(href);
       if (target) {
         target.scrollIntoView({ behavior: 'smooth' });
-        document.querySelectorAll('.nav-items a, .nav a').forEach(n => n.classList.remove('active'));
+        document.querySelectorAll('.nav-children a').forEach(n => n.classList.remove('active'));
         a.classList.add('active');
       }
     });
   });
+
   // Scroll spy
   const sections = document.querySelectorAll('section[id]');
-  const allNavLinks = document.querySelectorAll('.nav-items a[href^="#"], .nav a[href^="#"]');
+  const allNavLinks = document.querySelectorAll('.nav-children a[href^="#"]');
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
