@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Application Kit - Jimi Richardson</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #141420;
+    --surface-2: #1c1c2e;
+    --border: #2a2a42;
+    --text: #e8e8f0;
+    --text-muted: #8888a8;
+    --accent: #7c3aed;
+    --accent-light: #a78bfa;
+    --cyan: #22d3ee;
+    --cyan-light: #67e8f9;
+    --green: #34d399;
+    --orange: #fb923c;
+    --red: #f87171;
+    --pink: #f472b6;
+    --yellow: #fbbf24;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  .header { background: linear-gradient(135deg, #0f0a2e 0%, #1a0a3e 40%, #0a1628 100%); border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; text-align: center; }
+  .header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .header h1 span { background: linear-gradient(135deg, var(--cyan), var(--accent-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .header p { color: var(--text-muted); font-size: 0.9rem; }
+  .header .back { color: var(--cyan); text-decoration: none; font-size: 0.82rem; display: inline-block; margin-top: 0.75rem; }
+
+  .container { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+  section { margin-bottom: 2rem; }
+  h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; }
+  h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+
+  .copy-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  .copy-block .label {
+    font-size: 0.7rem;
+    color: var(--accent-light);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .copy-block .content {
+    font-size: 0.88rem;
+    color: var(--text);
+    white-space: pre-wrap;
+    line-height: 1.65;
+  }
+  .copy-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .copy-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+  .copy-btn.copied { background: var(--cyan); color: var(--bg); border-color: var(--cyan); }
+
+  .role-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+  }
+  .role-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .role-header:hover { background: var(--surface-2); }
+  .role-header .company { font-size: 0.72rem; color: var(--cyan); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  .role-header .title { font-weight: 600; font-size: 0.95rem; margin-top: 0.15rem; }
+  .role-header .arrow { color: var(--text-muted); font-size: 1.2rem; transition: transform 0.2s; }
+  .role-header.open .arrow { transform: rotate(180deg); }
+  .role-body { padding: 0 1.25rem 1.25rem; display: none; }
+  .role-body.open { display: block; }
+  .role-body .pitch { font-size: 0.88rem; white-space: pre-wrap; line-height: 1.65; color: var(--text); margin-bottom: 0.75rem; }
+  .role-body .actions { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: none;
+  }
+  .btn-primary { background: var(--cyan); color: var(--bg); }
+  .btn-primary:hover { background: var(--cyan-light); }
+  .btn-secondary { background: var(--surface-2); border: 1px solid var(--border); color: var(--text); }
+  .btn-secondary:hover { border-color: var(--cyan); color: var(--cyan); }
+
+  .tracker {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .tracker-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+  }
+  .tracker-row:last-child { border-bottom: none; }
+  .tracker-row .company { color: var(--cyan); font-weight: 600; min-width: 100px; font-size: 0.78rem; text-transform: uppercase; }
+  .tracker-row .role-name { flex: 1; }
+  .status-btn {
+    padding: 0.25rem 0.65rem;
+    border-radius: 99px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+  }
+  .status-btn.not-applied { background: rgba(136,136,168,0.2); color: var(--text-muted); }
+  .status-btn.applied { background: rgba(34,211,238,0.2); color: var(--cyan); }
+  .status-btn.interview { background: rgba(52,211,153,0.2); color: var(--green); }
+  .status-btn.rejected { background: rgba(248,113,113,0.15); color: var(--red); }
+
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+  @media (max-width: 640px) {
+    .container { padding: 1rem; }
+    .info-grid { grid-template-columns: 1fr; }
+    .role-header { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+    .role-header .arrow { position: absolute; right: 1rem; top: 1rem; }
+    .tracker-row { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1><span>Application Kit</span></h1>
+  <p>One-click pitches for Jimi Richardson's top-match roles</p>
+  <a class="back" href="index.html">&larr; Back to Jobs Board</a>
+</div>
+
+<div class="container">
+
+<!-- Quick Profile -->
+<section>
+  <h2>Your Profile (copy &amp; paste)</h2>
+
+  <div class="copy-block">
+    <div class="label">One-liner</div>
+    <div class="content" id="oneliner">Independent 3D motion designer specialising in Houdini simulation, product animation, and immersive brand visuals for health, beauty, and beverage brands.</div>
+    <button class="copy-btn" onclick="copyText('oneliner', this)">Copy</button>
+  </div>
+
+  <div class="copy-block">
+    <div class="label">Short Bio (for application forms)</div>
+    <div class="content" id="bio">I'm Jimi Richardson, an independent 3D motion designer with over 20 years across photography, moving image, design, and motion, now focused entirely on 3D. I specialise in Houdini simulation, product animation, and immersive brand visuals.
+
+I bring a photographer's eye to every render: light, texture, weight, time. I work with health, beauty, and beverage brands including Jurlique, MCO Beauty, Phyco Health, Shaw + Smith, Minirig, and Royal Salute, through my studio Animaforma.
+
+Portfolio: jimirichardson.com
+LinkedIn: linkedin.com/in/jimirichardson</div>
+    <button class="copy-btn" onclick="copyText('bio', this)">Copy</button>
+  </div>
+
+  <div class="info-grid">
+    <div class="copy-block">
+      <div class="label">Portfolio</div>
+      <div class="content" id="portfolio">https://www.jimirichardson.com</div>
+      <button class="copy-btn" onclick="copyText('portfolio', this)">Copy</button>
+    </div>
+    <div class="copy-block">
+      <div class="label">LinkedIn</div>
+      <div class="content" id="linkedin">https://www.linkedin.com/in/jimirichardson/</div>
+      <button class="copy-btn" onclick="copyText('linkedin', this)">Copy</button>
+    </div>
+    <div class="copy-block">
+      <div class="label">Email</div>
+      <div class="content" id="email">jimi@jimirichardson.com</div>
+      <button class="copy-btn" onclick="copyText('email', this)">Copy</button>
+    </div>
+    <div class="copy-block">
+      <div class="label">Instagram</div>
+      <div class="content" id="insta">instagram.com/jimirichardson</div>
+      <button class="copy-btn" onclick="copyText('insta', this)">Copy</button>
+    </div>
+  </div>
+</section>
+
+<!-- Tailored Pitches -->
+<section>
+  <h2>Tailored Pitches (click to expand, copy, apply)</h2>
+
+  <div class="role-card" id="role-mercury-3d">
+    <div class="role-header" onclick="toggleRole(this)">
+      <div><div class="company">Mercury</div><div class="title">Senior Brand Designer, Motion &amp; 3D</div></div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="role-body">
+      <div class="pitch" id="pitch-mercury-3d">Hi,
+
+I'd love to be considered for the Senior Brand Designer, Motion & 3D role at Mercury.
+
+I'm an independent 3D motion designer with over 20 years across photography, moving image, and design, now focused entirely on 3D. I specialise in Houdini simulation, product animation, and immersive brand visuals, which maps directly to what you're looking for in shaping Mercury's visual and creative expression through motion and 3D.
+
+My work for brands like Jurlique, Royal Salute, and MCO Beauty demonstrates exactly the kind of brand-led 3D and motion work this role calls for. I bring a photographer's eye to every render, with particular attention to light, texture, weight, and timing. That sensibility translates naturally into crafting brand moments that feel premium and intentional.
+
+You can see my work at jimirichardson.com and I'd welcome the chance to discuss how I could contribute to Mercury's brand.
+
+Jimi Richardson
+jimirichardson.com
+linkedin.com/in/jimirichardson</div>
+      <button class="copy-btn" onclick="copyText('pitch-mercury-3d', this)" style="position:static;margin-bottom:0.5rem;">Copy Pitch</button>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://boards.greenhouse.io/mercury/jobs/5096221004" target="_blank">Apply Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="role-card" id="role-vercel">
+    <div class="role-header" onclick="toggleRole(this)">
+      <div><div class="company">Vercel</div><div class="title">Senior Brand Designer ($156k-$234k)</div></div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="role-body">
+      <div class="pitch" id="pitch-vercel">Hi,
+
+I'm writing about the Senior Brand Designer role at Vercel.
+
+I'm a 3D motion designer with 20+ years of creative experience, now focused entirely on Houdini simulation, product animation, and brand visuals. The scope of this role, spanning web, motion, 3D, social, and print, aligns closely with how I already work: crafting immersive visual experiences that make brands feel tangible and premium.
+
+My clients include Jurlique, MCO Beauty, Shaw + Smith, and Royal Salute, all brands where product presentation and visual craft are everything. I bring a photographer's eye to every render and a deep understanding of how light, texture, and motion shape brand perception.
+
+I'm excited by Vercel's commitment to design excellence and would love to bring that same level of craft to your brand evolution.
+
+Portfolio: jimirichardson.com
+LinkedIn: linkedin.com/in/jimirichardson
+
+Jimi Richardson</div>
+      <button class="copy-btn" onclick="copyText('pitch-vercel', this)" style="position:static;margin-bottom:0.5rem;">Copy Pitch</button>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://vercel.com/careers/senior-brand-designer-us-5579560004" target="_blank">Apply Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="role-card" id="role-prospekt">
+    <div class="role-header" onclick="toggleRole(this)">
+      <div><div class="company">Prospekt</div><div class="title">Senior 3D &amp; Motion Designer ($80k-$120k)</div></div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="role-body">
+      <div class="pitch" id="pitch-prospekt">Hi,
+
+The Senior 3D & Motion Designer role at Prospekt is a strong fit for my background.
+
+I'm an independent 3D motion designer specialising in Houdini simulation, product animation, and immersive brand visuals. With 20+ years across photography, moving image, and design, I bring both the technical skills and the creative eye you're looking for.
+
+I work in Houdini, with experience across Octane and Redshift rendering, exactly the toolset you've listed. My clients include premium brands like Jurlique, Royal Salute, and Minirig, where the visual direction of experiential campaigns is central to the work.
+
+I'd be glad to walk through my portfolio and discuss how I could contribute to Prospekt's creative output.
+
+Portfolio: jimirichardson.com
+
+Jimi Richardson</div>
+      <button class="copy-btn" onclick="copyText('pitch-prospekt', this)" style="position:static;margin-bottom:0.5rem;">Copy Pitch</button>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://www.designremotejobs.com/job/prospekt-senior-3d-motion-designer" target="_blank">Apply Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="role-card" id="role-gm-tech">
+    <div class="role-header" onclick="toggleRole(this)">
+      <div><div class="company">General Motors</div><div class="title">Sr/Staff Technical Artist (Houdini Procedural)</div></div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="role-body">
+      <div class="pitch" id="pitch-gm-tech">Hi,
+
+I'm interested in the Senior/Staff Technical Artist role focused on materials, lighting, and procedural environments.
+
+Houdini is my primary tool. I specialise in simulation and procedural workflows, and I've spent 20+ years developing an eye for light, texture, and material accuracy, first through photography and now through 3D product visualisation.
+
+My work for brands like Jurlique, MCO Beauty, and Royal Salute demands the exact attention to material fidelity and lighting craft that procedural environment generation requires. I understand how to make things look and feel real, whether that's a product hero shot or a full procedural scene.
+
+I'd welcome the chance to discuss how my Houdini experience and visual sensibility could contribute to GM's technical art team.
+
+Portfolio: jimirichardson.com
+LinkedIn: linkedin.com/in/jimirichardson
+
+Jimi Richardson</div>
+      <button class="copy-btn" onclick="copyText('pitch-gm-tech', this)" style="position:static;margin-bottom:0.5rem;">Copy Pitch</button>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://jobgether.com/offer/69a8b29c7f0cfae7f12a1cce-senior-staff-technical-artist---materials-lighting-procedural-environments" target="_blank">Apply Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="role-card" id="role-gm-motion">
+    <div class="role-header" onclick="toggleRole(this)">
+      <div><div class="company">General Motors</div><div class="title">Motion Designer ($125k-$193k)</div></div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="role-body">
+      <div class="pitch" id="pitch-gm-motion">Hi,
+
+I'd like to be considered for the Motion Designer role within GM's Visual Identity and Design System team.
+
+I'm a 3D motion designer who specialises in product animation, and bringing products to life through motion is exactly what I do. My work for brands like Shaw + Smith, Minirig, and Phyco Health is centred on defining how a product moves, feels, and communicates visually.
+
+With over 20 years across photography and moving image, I bring a deep understanding of how motion, light, and timing shape brand perception. I'd bring that same craft to defining how motion brings GM's digital experiences to life.
+
+Portfolio: jimirichardson.com
+
+Jimi Richardson</div>
+      <button class="copy-btn" onclick="copyText('pitch-gm-motion', this)" style="position:static;margin-bottom:0.5rem;">Copy Pitch</button>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://search-careers.gm.com/en/jobs/jr-202601749/motion-designer-visual-identity-and-design-system/" target="_blank">Apply Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="role-card" id="role-cosa">
+    <div class="role-header" onclick="toggleRole(this)">
+      <div><div class="company">CoSA VFX</div><div class="title">FX Houdini Artist ($92k-$400k)</div></div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="role-body">
+      <div class="pitch" id="pitch-cosa">Hi,
+
+I'm a Houdini specialist interested in the FX Houdini Artist contract.
+
+Houdini is my primary tool, and I bring deep experience with simulation workflows, from fluid and particle systems to procedural effects. While my recent focus has been on product animation and brand visuals for clients like Jurlique, Royal Salute, and MCO Beauty, my simulation skills translate directly to the fire, smoke, fluid, and destruction work this role requires.
+
+I have over 20 years of visual experience, starting in photography and moving image before focusing entirely on 3D. That background gives me a strong eye for how effects integrate with live action and how to make simulations feel physically believable.
+
+I'd welcome the opportunity to contribute to CoSA's VFX work.
+
+Portfolio: jimirichardson.com
+
+Jimi Richardson</div>
+      <button class="copy-btn" onclick="copyText('pitch-cosa', this)" style="position:static;margin-bottom:0.5rem;">Copy Pitch</button>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://www.indeed.com/viewjob?jk=ac0e6863ff15d61f" target="_blank">Apply Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="role-card" id="role-metalab">
+    <div class="role-header" onclick="toggleRole(this)">
+      <div><div class="company">Metalab</div><div class="title">Senior Brand Designer (Marketing)</div></div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="role-body">
+      <div class="pitch" id="pitch-metalab">Hi,
+
+I'd love to be considered for the Senior Brand Designer role at Metalab.
+
+Story-driven visual narratives are at the heart of my work. I'm a 3D motion designer who creates immersive brand visuals for premium brands like Jurlique, Royal Salute, and Shaw + Smith. I specialise in translating complex product stories into compelling visual experiences.
+
+My 20+ years across photography, moving image, and design means I can own the full creative arc from concept to showreel. I understand how to craft case studies, campaign assets, and brand content that tells a story and looks exceptional.
+
+I'd love to discuss how I could bring that visual craft to Metalab's marketing.
+
+Portfolio: jimirichardson.com
+
+Jimi Richardson</div>
+      <button class="copy-btn" onclick="copyText('pitch-metalab', this)" style="position:static;margin-bottom:0.5rem;">Copy Pitch</button>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://job-boards.greenhouse.io/metalab/jobs/7681114" target="_blank">Apply Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="role-card" id="role-automattic">
+    <div class="role-header" onclick="toggleRole(this)">
+      <div><div class="company">Automattic</div><div class="title">Brand / Creative Designer ($95k-$200k, Worldwide)</div></div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="role-body">
+      <div class="pitch" id="pitch-automattic">Hi,
+
+I'm interested in the Brand/Creative Designer role at Automattic.
+
+I'm a 3D motion designer and creative with over 20 years across photography, moving image, and design. I currently work with health, beauty, and beverage brands like Jurlique, MCO Beauty, and Royal Salute, creating product animations, brand visuals, and CGI content that makes products feel premium and desirable.
+
+What draws me to this role is the breadth: brand and web design across digital and traditional channels, with the creative freedom to shape how WordPress, WooCommerce, and Tumblr show up visually. My background spans both the craft side (Houdini, 3D rendering, animation) and the strategic side (brand direction, visual storytelling).
+
+The worldwide, fully remote structure is exactly how I work best.
+
+Portfolio: jimirichardson.com
+LinkedIn: linkedin.com/in/jimirichardson
+
+Jimi Richardson</div>
+      <button class="copy-btn" onclick="copyText('pitch-automattic', this)" style="position:static;margin-bottom:0.5rem;">Copy Pitch</button>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://automattic.com/work-with-us/job/brand-creative-designer/" target="_blank">Apply Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="role-card" id="role-luckyrush">
+    <div class="role-header" onclick="toggleRole(this)">
+      <div><div class="company">LuckyRush.io</div><div class="title">Senior Creative Designer (Worldwide)</div></div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="role-body">
+      <div class="pitch" id="pitch-luckyrush">Hi,
+
+I'm a 3D motion designer interested in the Senior Creative Designer role at LuckyRush.
+
+I specialise in building brand visual identities through 3D, motion, and high-end product animation. My clients include Jurlique, MCO Beauty, Shaw + Smith, and Royal Salute, all brands where visual craft drives commercial impact.
+
+I'm already integrating AI tools into my workflow to accelerate concept development and production, which aligns with your approach. My motion and animation skills complement the brand and social creative scope of this role.
+
+Portfolio: jimirichardson.com
+
+Jimi Richardson</div>
+      <button class="copy-btn" onclick="copyText('pitch-luckyrush', this)" style="position:static;margin-bottom:0.5rem;">Copy Pitch</button>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://dribbble.com/jobs/304401-Senior-Creative-Designer" target="_blank">Apply Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="role-card" id="role-base">
+    <div class="role-header" onclick="toggleRole(this)">
+      <div><div class="company">Base Design</div><div class="title">Interaction Designer - 3D &amp; Motion (Saigon)</div></div>
+      <span class="arrow">&#9662;</span>
+    </div>
+    <div class="role-body">
+      <div class="pitch" id="pitch-base">Hi,
+
+I'm reaching out about the Interaction Designer, 3D & Motion role at Base Design's Saigon studio.
+
+I'm an independent 3D motion designer who brings 20+ years of visual experience to brand-focused 3D work. I specialise in Houdini simulation, product animation, and immersive brand visuals for premium clients including Jurlique, Royal Salute, and MCO Beauty.
+
+Base Design's approach to brand identity, where design, interaction, and motion converge, resonates deeply with how I work. I'd welcome the opportunity to bring my 3D and motion skills to one of the world's most respected branding studios.
+
+Portfolio: jimirichardson.com
+LinkedIn: linkedin.com/in/jimirichardson
+
+Jimi Richardson</div>
+      <button class="copy-btn" onclick="copyText('pitch-base', this)" style="position:static;margin-bottom:0.5rem;">Copy Pitch</button>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://www.basedesign.com/jobs" target="_blank">Apply Now</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- Application Tracker -->
+<section>
+  <h2>Application Tracker</h2>
+  <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.75rem;">Click the status button to cycle through: Not Applied &rarr; Applied &rarr; Interview &rarr; Rejected. Saves to your browser.</p>
+  <div class="tracker" id="tracker">
+    <div class="tracker-row"><span class="company">Mercury</span><span class="role-name">Sr Brand Designer, Motion & 3D</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'mercury-3d')">Not Applied</button></div>
+    <div class="tracker-row"><span class="company">Vercel</span><span class="role-name">Senior Brand Designer</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'vercel')">Not Applied</button></div>
+    <div class="tracker-row"><span class="company">Prospekt</span><span class="role-name">Senior 3D & Motion Designer</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'prospekt')">Not Applied</button></div>
+    <div class="tracker-row"><span class="company">GM</span><span class="role-name">Technical Artist (Houdini)</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'gm-tech')">Not Applied</button></div>
+    <div class="tracker-row"><span class="company">GM</span><span class="role-name">Motion Designer</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'gm-motion')">Not Applied</button></div>
+    <div class="tracker-row"><span class="company">CoSA VFX</span><span class="role-name">FX Houdini Artist</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'cosa')">Not Applied</button></div>
+    <div class="tracker-row"><span class="company">Metalab</span><span class="role-name">Sr Brand Designer (Marketing)</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'metalab')">Not Applied</button></div>
+    <div class="tracker-row"><span class="company">Automattic</span><span class="role-name">Brand / Creative Designer</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'automattic')">Not Applied</button></div>
+    <div class="tracker-row"><span class="company">LuckyRush</span><span class="role-name">Senior Creative Designer</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'luckyrush')">Not Applied</button></div>
+    <div class="tracker-row"><span class="company">Base Design</span><span class="role-name">Interaction Designer 3D & Motion</span><button class="status-btn not-applied" onclick="cycleStatus(this, 'base')">Not Applied</button></div>
+  </div>
+</section>
+
+</div>
+
+<script>
+  // Copy to clipboard
+  function copyText(id, btn) {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+
+  // Toggle role accordion
+  function toggleRole(header) {
+    const body = header.nextElementSibling;
+    const isOpen = body.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.role-body').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.role-header').forEach(h => h.classList.remove('open'));
+    // Open clicked (if it wasn't already open)
+    if (!isOpen) {
+      body.classList.add('open');
+      header.classList.add('open');
+    }
+  }
+
+  // Application tracker with localStorage
+  const statuses = ['not-applied', 'applied', 'interview', 'rejected'];
+  const statusLabels = { 'not-applied': 'Not Applied', 'applied': 'Applied', 'interview': 'Interview', 'rejected': 'Rejected' };
+
+  function cycleStatus(btn, roleId) {
+    const current = statuses.find(s => btn.classList.contains(s));
+    const next = statuses[(statuses.indexOf(current) + 1) % statuses.length];
+    btn.classList.remove(...statuses);
+    btn.classList.add(next);
+    btn.textContent = statusLabels[next];
+    // Save
+    const saved = JSON.parse(localStorage.getItem('jimi-tracker') || '{}');
+    saved[roleId] = next;
+    localStorage.setItem('jimi-tracker', JSON.stringify(saved));
+  }
+
+  // Load saved statuses
+  window.addEventListener('DOMContentLoaded', () => {
+    const saved = JSON.parse(localStorage.getItem('jimi-tracker') || '{}');
+    for (const [roleId, status] of Object.entries(saved)) {
+      const btn = document.querySelector(`[onclick*="'${roleId}'"]`);
+      if (btn) {
+        btn.classList.remove(...statuses);
+        btn.classList.add(status);
+        btn.textContent = statusLabels[status];
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
