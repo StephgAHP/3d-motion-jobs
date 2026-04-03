@@ -179,6 +179,11 @@
     <div class="stat"><div class="num">1,836</div><div class="label">Remote on NoDesk</div></div>
     <div class="stat"><div class="num">30+</div><div class="label">Job Boards</div></div>
   </div>
+  <a href="apply.html" style="display:inline-flex;align-items:center;gap:0.5rem;margin-top:1.5rem;background:var(--cyan-light);color:#0a0a0f;padding:0.75rem 2rem;border-radius:99px;font-weight:700;font-size:0.95rem;text-decoration:none;position:relative;transition:all 0.15s;box-shadow:0 0 20px rgba(34,211,238,0.3);">
+    <span style="display:inline-block;width:10px;height:10px;background:#0a0a0f;border-radius:50%;animation:pulse 1.5s infinite;"></span>
+    Apply Now - Tailored Pitches Ready
+  </a>
+  <style>@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.8);}}</style>
 </header>
 
 <div class="nav-wrapper">
@@ -1490,7 +1495,19 @@
   Built for Jimi.
 </footer>
 
+<!-- Floating Apply Button -->
+<a href="apply.html" id="fab" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;display:flex;align-items:center;gap:0.5rem;background:var(--cyan-light);color:#0a0a0f;padding:0.7rem 1.25rem;border-radius:99px;font-weight:700;font-size:0.85rem;text-decoration:none;box-shadow:0 4px 24px rgba(34,211,238,0.35);transition:all 0.2s;">
+  <span style="display:inline-block;width:8px;height:8px;background:#0a0a0f;border-radius:50%;animation:pulse 1.5s infinite;"></span>
+  Apply Now
+</a>
+
 <script>
+  // Hide FAB when at top of page (hero CTA visible)
+  window.addEventListener('scroll', () => {
+    document.getElementById('fab').style.opacity = window.scrollY > 400 ? '1' : '0';
+    document.getElementById('fab').style.pointerEvents = window.scrollY > 400 ? 'auto' : 'none';
+  });
+
   document.querySelectorAll('.nav a').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
