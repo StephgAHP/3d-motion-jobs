@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Gmail Tracker Setup - Auto-sync your outreach</title>
+<style>
+  :root { --bg:#0a0a0f; --surface:#141420; --surface-2:#1c1c2e; --border:#2a2a42; --text:#e8e8f0; --text-muted:#8888a8; --cyan:#22d3ee; --cyan-light:#67e8f9; --accent:#7c3aed; --accent-light:#a78bfa; --green:#34d399; --orange:#fb923c; --radius:12px; --radius-sm:8px; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif; background:var(--bg); color:var(--text); line-height:1.7; -webkit-font-smoothing:antialiased; }
+  .header { background:linear-gradient(135deg,#0f0a2e,#1a0a3e,#0a1628); border-bottom:1px solid var(--border); padding:2rem 1.5rem; text-align:center; }
+  .header h1 { font-size:1.6rem; font-weight:700; }
+  .header h1 span { background:linear-gradient(135deg,var(--cyan),var(--accent-light)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .header p { color:var(--text-muted); font-size:0.9rem; margin-top:0.3rem; }
+  .header .back { color:var(--cyan); text-decoration:none; font-size:0.82rem; display:inline-block; margin-top:0.75rem; }
+  .container { max-width:720px; margin:0 auto; padding:1.5rem; }
+  h2 { font-size:1.15rem; font-weight:700; margin:2rem 0 0.75rem; }
+  .time { display:inline-block; background:rgba(34,211,238,0.15); color:var(--cyan-light); font-size:0.72rem; font-weight:600; padding:0.15rem 0.5rem; border-radius:99px; margin-left:0.5rem; }
+  .step { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem; margin-bottom:1rem; counter-increment:steps; position:relative; padding-left:3.5rem; }
+  .step::before { content:counter(steps); position:absolute; left:1rem; top:1.25rem; width:1.8rem; height:1.8rem; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; color:#fff; }
+  .step h3 { font-size:0.95rem; font-weight:600; margin-bottom:0.35rem; }
+  .step p { font-size:0.88rem; color:var(--text-muted); }
+  .step a { color:var(--cyan); }
+  .code-block { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1rem; margin:0.75rem 0; font-family:'Courier New',monospace; font-size:0.8rem; line-height:1.5; overflow-x:auto; white-space:pre; position:relative; color:var(--cyan-light); }
+  .copy-code { position:absolute; top:0.5rem; right:0.5rem; background:var(--surface-2); border:1px solid var(--border); color:var(--text-muted); padding:0.25rem 0.6rem; border-radius:4px; font-size:0.68rem; font-weight:600; cursor:pointer; }
+  .copy-code:hover { border-color:var(--cyan); color:var(--cyan); }
+  .note { background:rgba(251,146,60,0.1); border:1px solid rgba(251,146,60,0.25); border-radius:var(--radius-sm); padding:0.85rem 1rem; font-size:0.85rem; color:var(--orange); margin:1rem 0; }
+  .done-box { background:rgba(52,211,153,0.1); border:2px solid var(--green); border-radius:var(--radius); padding:1.5rem; text-align:center; margin:2rem 0; }
+  .done-box h3 { color:var(--green); font-size:1.1rem; margin-bottom:0.5rem; }
+  .done-box p { font-size:0.88rem; color:var(--text-muted); }
+  ol.steps { counter-reset:steps; list-style:none; }
+  @media (max-width:640px) { .container { padding:1rem; } .step { padding-left:3rem; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1><span>Gmail Tracker</span> Setup</h1>
+  <p>Auto-sync your outreach emails with your Application Tracker</p>
+  <a class="back" href="apply.html">&larr; Back to Application Kit</a>
+</div>
+
+<div class="container">
+
+<p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1.5rem;">This connects your Gmail to a Google Sheet so you can automatically track every email you send to studios and employers. Takes about 10 minutes to set up, then it runs on its own.</p>
+
+<h2>What You'll Get <span class="time">10 min setup</span></h2>
+<p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1.5rem;">A Google Sheet that automatically logs every outreach email you send, with columns for: Date, Company, Subject, Status. It checks your Sent folder every hour and updates itself.</p>
+
+<ol class="steps">
+
+<div class="step">
+  <h3>Create a Google Sheet</h3>
+  <p>Go to <a href="https://sheets.new" target="_blank">sheets.new</a> and name it <strong>"Job Outreach Tracker"</strong>.</p>
+  <p style="margin-top:0.5rem;">Add these headers in Row 1:</p>
+  <div class="code-block"><button class="copy-code" onclick="copyCode(this)">Copy</button>Date	Company	To	Subject	Status	Notes</div>
+  <p style="margin-top:0.5rem;font-size:0.82rem;color:var(--text-muted);">Put each word in its own column (A1 through F1).</p>
+</div>
+
+<div class="step">
+  <h3>Open Apps Script</h3>
+  <p>In your Sheet, go to <strong>Extensions > Apps Script</strong>. This opens the script editor.</p>
+  <p style="margin-top:0.35rem;font-size:0.82rem;color:var(--text-muted);">Delete any code that's already there.</p>
+</div>
+
+<div class="step">
+  <h3>Paste this script</h3>
+  <p>Copy the entire code below and paste it into the Apps Script editor:</p>
+  <div class="code-block" id="script-code"><button class="copy-code" onclick="copyCode(this)">Copy</button>function logSentEmails() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var lastCheck = PropertiesService.getScriptProperties().getProperty('lastCheck');
+  var searchDate = lastCheck || 'newer_than:1d';
+
+  // Search sent emails - adjust the search terms to match your outreach
+  var studios = [
+    'buck.co', 'andwalsh.com', 'mvsm.com', 'pentagram.com', 'basedesign.com',
+    'tendril.studio', 'ordinaryfolk.co', 'themill.com', 'superside.com',
+    'unit9.com', 'deptagency.com', 'instrument.com', 'framestore.com',
+    'dneg.com', 'greenhouse.io', 'lever.co', 'workable.com',
+    'designremotejobs.com', 'danthree.studio', 'mercury.com', 'vercel.com',
+    'automattic.com', 'metalab.com', 'cosa.vfx', 'reelgood.com'
+  ];
+
+  // Also search for keywords in subject line
+  var keywords = ['application', 'portfolio', '3D motion', 'houdini',
+                  'product animation', 'interested in the role'];
+
+  var threads = GmailApp.search('in:sent ' + searchDate);
+  var existingSubjects = getExistingSubjects(sheet);
+  var newRows = [];
+
+  for (var i = 0; i < threads.length; i++) {
+    var messages = threads[i].getMessages();
+    for (var j = 0; j < messages.length; j++) {
+      var msg = messages[j];
+      if (msg.getFrom().indexOf(Session.getActiveUser().getEmail()) === -1) continue;
+
+      var to = msg.getTo();
+      var subject = msg.getSubject();
+      var date = msg.getDate();
+      var uniqueKey = subject + '|' + to;
+
+      if (existingSubjects[uniqueKey]) continue;
+
+      // Check if this email matches our studios or keywords
+      var isMatch = false;
+      var company = '';
+
+      for (var k = 0; k < studios.length; k++) {
+        if (to.toLowerCase().indexOf(studios[k]) !== -1) {
+          isMatch = true;
+          company = studios[k].split('.')[0];
+          company = company.charAt(0).toUpperCase() + company.slice(1);
+          break;
+        }
+      }
+
+      if (!isMatch) {
+        var subjectLower = subject.toLowerCase();
+        for (var k = 0; k < keywords.length; k++) {
+          if (subjectLower.indexOf(keywords[k]) !== -1) {
+            isMatch = true;
+            company = extractDomain(to);
+            break;
+          }
+        }
+      }
+
+      if (isMatch) {
+        newRows.push([
+          Utilities.formatDate(date, Session.getScriptTimeZone(), 'yyyy-MM-dd'),
+          company,
+          to,
+          subject,
+          'Sent',
+          ''
+        ]);
+        existingSubjects[uniqueKey] = true;
+      }
+    }
+  }
+
+  // Write new rows
+  if (newRows.length > 0) {
+    var lastRow = Math.max(sheet.getLastRow(), 1);
+    sheet.getRange(lastRow + 1, 1, newRows.length, 6).setValues(newRows);
+  }
+
+  // Update last check time
+  PropertiesService.getScriptProperties().setProperty(
+    'lastCheck',
+    'after:' + Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy/MM/dd')
+  );
+}
+
+function getExistingSubjects(sheet) {
+  var data = sheet.getDataRange().getValues();
+  var subjects = {};
+  for (var i = 1; i < data.length; i++) {
+    subjects[data[i][3] + '|' + data[i][2]] = true;
+  }
+  return subjects;
+}
+
+function extractDomain(email) {
+  var match = email.match(/@([^>]+)/);
+  if (match) {
+    var domain = match[1].split('.')[0];
+    return domain.charAt(0).toUpperCase() + domain.slice(1);
+  }
+  return 'Unknown';
+}
+
+// Run this once to set up the hourly trigger
+function setupTrigger() {
+  // Remove old triggers
+  var triggers = ScriptApp.getProjectTriggers();
+  for (var i = 0; i < triggers.length; i++) {
+    ScriptApp.deleteTrigger(triggers[i]);
+  }
+  // Create hourly trigger
+  ScriptApp.newTrigger('logSentEmails')
+    .timeBased()
+    .everyHours(1)
+    .create();
+  Logger.log('Trigger set up. Will check sent emails every hour.');
+}</div>
+</div>
+
+<div class="step">
+  <h3>Save and run the setup</h3>
+  <p>1. Click the <strong>Save</strong> icon (or Ctrl+S)</p>
+  <p>2. In the function dropdown at the top, select <strong>setupTrigger</strong></p>
+  <p>3. Click <strong>Run</strong></p>
+  <p>4. It will ask for permissions. Click <strong>Review Permissions > Allow</strong>. This lets the script read your sent emails and write to the sheet.</p>
+</div>
+
+<div class="step">
+  <h3>Run it once manually</h3>
+  <p>Change the function dropdown to <strong>logSentEmails</strong> and click <strong>Run</strong>.</p>
+  <p style="margin-top:0.35rem;font-size:0.82rem;color:var(--text-muted);">This scans your sent emails from the last day. Any matching outreach emails will appear in the sheet.</p>
+</div>
+
+</ol>
+
+<div class="done-box">
+  <h3>That's it. You're done.</h3>
+  <p>The script runs every hour automatically. Any email you send to a studio or with job-related keywords in the subject line will be logged to your Sheet.</p>
+  <p style="margin-top:0.75rem;font-size:0.82rem;">To add more studios: edit the <code>studios</code> array in the script.<br>To add more keywords: edit the <code>keywords</code> array.</p>
+</div>
+
+<div class="note">
+  <strong>Tip:</strong> After sending each outreach email, update the Status column in your Sheet (Sent > Replied > Meeting > Hired / No Response). The sheet becomes your CRM.
+</div>
+
+<h2>How to customise</h2>
+
+<div class="step" style="counter-increment:none;">
+  <h3 style="font-size:0.88rem;">Add a new studio to track</h3>
+  <p>Open Apps Script, find the <code>studios</code> array, and add the domain:</p>
+  <div class="code-block"><button class="copy-code" onclick="copyCode(this)">Copy</button>'newstudio.com',</div>
+</div>
+
+<div class="step" style="counter-increment:none;">
+  <h3 style="font-size:0.88rem;">Add a new keyword to catch</h3>
+  <p>Find the <code>keywords</code> array and add your term:</p>
+  <div class="code-block"><button class="copy-code" onclick="copyCode(this)">Copy</button>'freelance inquiry',</div>
+</div>
+
+</div>
+
+<script>
+function copyCode(btn) {
+  const block = btn.parentElement;
+  const code = block.id === 'script-code'
+    ? block.innerText.replace('Copy', '').trim()
+    : block.innerText.replace('Copy', '').trim();
+  navigator.clipboard.writeText(code).then(() => {
+    btn.textContent = 'Copied!';
+    btn.style.borderColor = '#22d3ee';
+    btn.style.color = '#22d3ee';
+    setTimeout(() => { btn.textContent = 'Copy'; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
