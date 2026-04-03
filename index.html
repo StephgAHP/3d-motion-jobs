@@ -97,6 +97,9 @@
   .tag.hot { background: rgba(251,191,36,0.2); color: var(--yellow); }
   .tag.contract { background: rgba(244,114,182,0.15); color: var(--pink); }
   .tag.closing { background: rgba(248,113,113,0.15); color: var(--red); }
+  .tag.top-pick { background: rgba(34,211,238,0.25); color: var(--cyan-light); font-weight: 700; }
+  .job-card.top-pick { border-color: var(--cyan); border-width: 2px; position: relative; }
+  .job-card.top-pick::after { content: 'TOP PICK'; position: absolute; top: -1px; right: 12px; background: var(--cyan); color: var(--bg); font-size: 0.6rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 0 0 6px 6px; letter-spacing: 0.06em; }
   .job-card .desc { font-size: 0.85rem; color: var(--text-muted); flex: 1; margin-bottom: 0.75rem; }
   .job-card .apply-link { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--cyan); text-decoration: none; font-size: 0.82rem; font-weight: 500; transition: color 0.15s; }
   .job-card .apply-link:hover { color: #fff; }
@@ -180,7 +183,8 @@
 
 <div class="nav-wrapper">
   <nav class="nav">
-    <a href="#creative" class="active">Creative / Brand</a>
+    <a href="#top-picks" class="active">Top Picks</a>
+    <a href="#creative">Creative / Brand</a>
     <a href="#motion">3D / Motion</a>
     <a href="#houdini">Houdini / FX</a>
     <a href="#studios-creative">Studios</a>
@@ -194,6 +198,139 @@
 </div>
 
 <div class="container">
+
+<!-- Top Picks for Jimi -->
+<section id="top-picks">
+  <div class="section-header">
+    <h2>Top Picks for Jimi</h2>
+    <span class="badge cyan">Best Matches</span>
+  </div>
+  <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.25rem;">Curated for an independent 3D motion designer specialising in Houdini simulation, product animation, and immersive brand visuals. 20+ years across photography, moving image, design, and motion.</p>
+  <div class="jobs-grid">
+
+    <div class="job-card top-pick">
+      <div class="company">Mercury</div>
+      <div class="title">Senior Brand Designer, Motion &amp; 3D</div>
+      <div class="meta">
+        <span class="tag remote">Remote US/Canada</span>
+        <span class="tag salary">Competitive + equity</span>
+        <span class="tag top-pick">Houdini + Brand + Motion</span>
+      </div>
+      <div class="desc">Literally made for Jimi's profile. Dedicated motion and 3D brand design. Shape the visual, emotional, and creative expression of the brand through motion and 3D work.</div>
+      <a class="apply-link" href="https://boards.greenhouse.io/mercury/jobs/5096221004" target="_blank">Apply on Greenhouse <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card top-pick">
+      <div class="company">Vercel</div>
+      <div class="title">Senior Brand Designer</div>
+      <div class="meta">
+        <span class="tag remote">Remote US</span>
+        <span class="tag salary">$156k-$234k + equity</span>
+        <span class="tag top-pick">3D + Motion + Brand</span>
+      </div>
+      <div class="desc">Scope explicitly includes 3D, motion, web, social, print. Lead brand evolution across product launches and campaigns. High-bar, fast-moving creative environment.</div>
+      <a class="apply-link" href="https://vercel.com/careers/senior-brand-designer-us-5579560004" target="_blank">Apply on Vercel <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card top-pick">
+      <div class="company">Prospekt</div>
+      <div class="title">Senior 3D &amp; Motion Designer</div>
+      <div class="meta">
+        <span class="tag remote">Remote NA/EU</span>
+        <span class="tag salary">$80k-$120k</span>
+        <span class="tag top-pick">3D + Brand + Houdini welcome</span>
+      </div>
+      <div class="desc">Lead visual direction for 3D and motion across experiential campaigns. Cinema 4D, Blender, or Houdini. Octane/Redshift rendering. 5+ years. Strong brand focus.</div>
+      <a class="apply-link" href="https://www.designremotejobs.com/job/prospekt-senior-3d-motion-designer" target="_blank">Apply <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card top-pick">
+      <div class="company">General Motors</div>
+      <div class="title">Sr/Staff Technical Artist (Materials, Lighting &amp; Procedural Environments)</div>
+      <div class="meta">
+        <span class="tag remote">Remote / hybrid</span>
+        <span class="tag top-pick">Houdini procedural required</span>
+      </div>
+      <div class="desc">3+ years Houdini experience required. Procedural tools to generate environments, layouts, and set dressing at scale. Product visualization meets procedural design.</div>
+      <a class="apply-link" href="https://jobgether.com/offer/69a8b29c7f0cfae7f12a1cce-senior-staff-technical-artist---materials-lighting-procedural-environments" target="_blank">Apply <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card top-pick">
+      <div class="company">General Motors</div>
+      <div class="title">Motion Designer, Visual Identity &amp; Design System</div>
+      <div class="meta">
+        <span class="tag remote">Remote</span>
+        <span class="tag salary">$125k-$193k</span>
+        <span class="tag top-pick">Motion + Brand + Product</span>
+      </div>
+      <div class="desc">Define how motion brings GM's digital experiences to life. Product animation meets brand identity. Jimi's photographer's eye for light, texture, and weight is a perfect fit.</div>
+      <a class="apply-link" href="https://search-careers.gm.com/en/jobs/jr-202601749/motion-designer-visual-identity-and-design-system/" target="_blank">Apply on GM Careers <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card top-pick">
+      <div class="company">CoSA VFX</div>
+      <div class="title">FX Houdini Artist</div>
+      <div class="meta">
+        <span class="tag remote">Remote US</span>
+        <span class="tag salary">$92k-$400k</span>
+        <span class="tag top-pick">Houdini specialist</span>
+      </div>
+      <div class="desc">Fire, smoke, fluids, electricity, explosions. 5+ years Houdini. Award-winning VFX studio. Short-term contract, great for building studio credits.</div>
+      <a class="apply-link" href="https://www.indeed.com/viewjob?jk=ac0e6863ff15d61f" target="_blank">Apply on Indeed <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card top-pick">
+      <div class="company">Metalab</div>
+      <div class="title">Senior Brand Designer (Marketing)</div>
+      <div class="meta">
+        <span class="tag remote">Remote PST-GMT</span>
+        <span class="tag top-pick">Brand + Visual Narrative</span>
+      </div>
+      <div class="desc">Story-driven visual narratives. Case studies, showreels, campaign assets. Jimi's photography background and brand visual skills are directly relevant.</div>
+      <a class="apply-link" href="https://job-boards.greenhouse.io/metalab/jobs/7681114" target="_blank">Apply on Greenhouse <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card top-pick">
+      <div class="company">LuckyRush.io</div>
+      <div class="title">Senior Creative Designer</div>
+      <div class="meta">
+        <span class="tag remote">Worldwide</span>
+        <span class="tag hot">Posted 1 Apr</span>
+        <span class="tag top-pick">Brand + Motion + AI</span>
+      </div>
+      <div class="desc">Build brand across branding, ad creatives, social, promo assets. Motion/animation valued. AI tools in workflow. Global remote, just posted.</div>
+      <a class="apply-link" href="https://dribbble.com/jobs/304401-Senior-Creative-Designer" target="_blank">Apply on Dribbble <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card top-pick">
+      <div class="company">Automattic</div>
+      <div class="title">Brand / Creative Designer</div>
+      <div class="meta">
+        <span class="tag remote">Worldwide (no geo restrictions)</span>
+        <span class="tag salary">$95k-$200k</span>
+        <span class="tag top-pick">Worldwide + Brand</span>
+      </div>
+      <div class="desc">WordPress, WooCommerce, Tumblr. Brand and web design across digital and traditional. One of the few truly worldwide remote roles with no location restrictions.</div>
+      <a class="apply-link" href="https://automattic.com/work-with-us/job/brand-creative-designer/" target="_blank">Apply on Automattic <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <div class="job-card top-pick">
+      <div class="company">Base Design</div>
+      <div class="title">Interaction Designer - 3D &amp; Motion</div>
+      <div class="meta">
+        <span class="tag onsite">Saigon</span>
+        <span class="tag top-pick">3D + Motion + Branding Agency</span>
+      </div>
+      <div class="desc">One of the world's top branding studios. Dedicated 3D &amp; Motion interaction design role. Brand-focused 3D work at the highest level.</div>
+      <a class="apply-link" href="https://www.basedesign.com/jobs" target="_blank">Apply on Base Design <svg class="arrow-svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+  </div>
+
+  <div style="margin-top:1rem;padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);">
+    <p style="font-size:0.85rem;color:var(--text-muted);"><strong style="color:var(--cyan);">Why these?</strong> Jimi is an independent 3D motion designer with 20+ years across photography, moving image, and design, now focused on Houdini simulation, product animation, and immersive brand visuals for health, beauty, and beverage brands. These roles match his unique combination of brand sensibility, 3D/motion technical skills, Houdini expertise, and photographer's eye for light and texture.</p>
+  </div>
+</section>
 
 <!-- Creative / Brand Designer Roles -->
 <section id="creative">
